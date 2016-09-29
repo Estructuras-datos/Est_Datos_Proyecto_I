@@ -11,4 +11,28 @@ package damas.model;
  */
 public class Jugador {
     
+    private String nombre;
+    private char color;
+
+    public Jugador(String nombre, char color) {
+        this.nombre = nombre;
+        this.color = color;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public char getColor() {
+        return color;
+    }
+
+    public void setColor(char color) {
+        this.color = color;
+    }
+    
 }
