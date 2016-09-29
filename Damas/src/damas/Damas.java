@@ -5,6 +5,8 @@
  */
 package damas;
 
+import damas.model.Lista;
+
 /**
  *
  * @author sheshovega
@@ -15,7 +17,15 @@ public class Damas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Lista<String> list = new Lista<String>();
+        
+        list.agregarFinal("uno");
+        list.agregarFinal("dos");
+        list.agregarFinal("tres");
+        list.agregarFinal("cuatro");
+        System.out.println(list.getTamanio());
+        list.imprimir();
+        
     }
     
 }

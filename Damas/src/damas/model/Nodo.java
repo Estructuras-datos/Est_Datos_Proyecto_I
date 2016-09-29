@@ -15,10 +15,10 @@ public class Nodo<T> {
     private Nodo anterior;
     private Nodo siguiente;
 
-    public Nodo(T dato, Nodo anterior, Nodo siguiente) {
+    public Nodo(T dato) {
         this.dato = dato;
-        this.anterior = anterior;
-        this.siguiente = siguiente;
+        this.anterior = null;
+        this.siguiente = null;
     }
 
     public T getDato() {

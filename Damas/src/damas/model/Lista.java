@@ -9,6 +9,53 @@ package damas.model;
  *
  * @author sheshovega
  */
-public class Lista {
+public class Lista<T> {
     
+    private Nodo inicio;
+    private Nodo fin;
+    private int tamanio;
+
+    public Lista() {
+        inicio = fin = null;
+        this.tamanio = 0;
+    }
+
+    public Nodo getInicio() {
+        return inicio;
+    }
+
+    public Nodo getFin() {
+        return fin;
+    }
+
+    public int getTamanio() {
+        return tamanio;
+    }
+    
+    public boolean esVacia(){
+        return (inicio == null);
+    }
+    
+    public void agregarFinal(T dato){
+        Nodo<T> nuevo = new Nodo<T>(dato);
+        if(esVacia()){
+            inicio = fin = nuevo;
+            tamanio++;
+        }else{
+            fin.setSiguiente(nuevo);
+            nuevo.setAnterior(fin);
+            fin = nuevo;
+            tamanio++;
+        }
+    }
+    
+        
+    public void imprimir(){
+        Nodo aux = inicio;
+        while(aux != null){
+            System.out.print(aux.getDato() + "->");
+            aux = aux.getSiguiente();
+        }
+        System.out.println();
+    }
 }
