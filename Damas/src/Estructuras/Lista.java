@@ -7,7 +7,7 @@ package Estructuras;
 
 /**
  *
- * @author Denis Rodriguez
+ * @authors Denis Rodriguez, Sergio Vega
  */
 public class Lista<T> {
     

@@ -7,7 +7,7 @@ package Estructuras;
 
 /**
  *
- * @author Denis Rodriguez
+ * @author Denis Rodriguez, Sergio Vega
  */
 public class Nodo<T> {
     
