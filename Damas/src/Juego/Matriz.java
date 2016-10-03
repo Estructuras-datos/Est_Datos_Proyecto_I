@@ -1,4 +1,6 @@
 package Juego;
+import Estructuras.Iterador;
+import Estructuras.Lista;
 import Piezas.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,92 +13,92 @@ import java.awt.event.ActionListener;
 
 public class Matriz{
     
-    private Campo [][] matriz; //matriz de campos, incluye tanto los espacios vacios como las piezas de ajedrez
+    private Lista<Lista> matriz;
+    //private Campo [][] matriz; //matriz de campos, incluye tanto los espacios vacios como las piezas de ajedrez
     
     public Matriz() {
         
-        matriz=new Campo[8][8];
-        inicializarPiezas();
+        //matriz=new Campo[8][8];
+        this.matriz = new Lista<Lista>();
+        inicializarTablero();
         
     }
     
-    
-    private void inicializarPiezas(){
-        
-        
-        matriz[0][0]=new Campo(new Ficha('b','n'),0,0,'n');
-        matriz[0][1]=new Campo(new Ficha('b','b'),1,0,'b');
-        matriz[0][2]=new Campo(new Ficha('b','n'),2,0,'n');
-        matriz[0][3]=new Campo(new Ficha('b','b'),3,0,'b');
-        matriz[0][4]=new Campo(new Ficha('b','n'),4,0,'n');
-        matriz[0][5]=new Campo(new Ficha('b','b'),5,0,'b');
-        matriz[0][6]=new Campo(new Ficha('b','n'),6,0,'n');
-        matriz[0][7]=new Campo(new Ficha('b','b'),7,0,'b');
-        
-        matriz[1][0]=new Campo(new Ficha('b','b'),0,1,'b');
-        matriz[1][1]=new Campo(new Ficha('b','n'),1,1,'n');
-        matriz[1][2]=new Campo(new Ficha('b','b'),2,1,'b');
-        matriz[1][3]=new Campo(new Ficha('b','n'),3,1,'n');
-        matriz[1][4]=new Campo(new Ficha('b','b'),4,1,'b');
-        matriz[1][5]=new Campo(new Ficha('b','n'),5,1,'n');
-        matriz[1][6]=new Campo(new Ficha('b','b'),6,1,'b');
-        matriz[1][7]=new Campo(new Ficha('b','n'),7,1,'n');
-        
-        
-        
-        //Fichas sin pieza del centro del tablero
-        for(int i=2;i<6;i++){
-            for(int j=0;j<8;j++){
-                if((i & 1) == 0 && (j & 1) == 0){
-                    matriz[i][j]=new Campo(new Vacio('n'),j,i,'n');
+        private void inicializarTablero() {
+
+        for (int i = 0; i < 8; i++) {
+            Lista fi = new Lista<Campo>(); //creo las columnas cada vez que creo una nueva fila
+
+            for (int j = 0; j < 8; j++) {
+
+                switch (i % 2) {
+
+                    case 0: //fila par
+                        switch (j % 2) {
+
+                            case 0: //columna par
+                                fi.agregarFinal(new Campo(new Vacio('b'), i, j, 'b')); //todo en la columna y fila par es vacio en blanco
+                                break;
+
+                            case 1: //columna impar
+                                if (i < 3) { //fichas del jugador negro
+                                    fi.agregarFinal(new Campo(new Ficha('n', 'n'), i, j, 'n'));
+
+                                } else if (i > 4) { //fichas del jugador blanco
+                                    fi.agregarFinal(new Campo(new Ficha('b', 'n'), i, j, 'n'));
+
+                                } else { //fichas vacias
+                                    fi.agregarFinal(new Campo(new Vacio('n'), i, j, 'n')); //posiciones nulas
+
+                                }
+                                break;
+                        }
+                        break;
+
+                    case 1: //fila impar
+                        switch (j % 2) {
+                            case 0: //columna par
+                                if (i < 3) { //fichas del jugador negro
+                                    fi.agregarFinal(new Campo(new Ficha('n', 'n'), i, j, 'n'));
+
+                                } else if (i > 4) { //fichas del jugador blanco
+                                    fi.agregarFinal(new Campo(new Ficha('b', 'n'), i, j, 'n'));
+
+                                } else { //fichas vacias
+                                    fi.agregarFinal(new Campo(new Vacio('n'), i, j, 'n'));
+
+                                }
+                                break;
+
+                            case 1: //columna impar
+                                fi.agregarFinal(new Campo(new Vacio('b'), i, j, 'b')); //posiciones nulas
+                                break;
+
+                        }
+                        break;
                 }
-                else{
-                    if((i & 1) != 0 && (j & 1) != 0){
-                        matriz[i][j]=new Campo(new Vacio('n'),j,i,'n');
-                    }
-                    
-                    else{
-                        matriz[i][j]=new Campo(new Vacio('b'),j,i,'b');
-                    }
-                }
-                
+                matriz.agregarFinal(fi);
             }
         }
-        
-        
-        matriz[7][0]=new Campo(new Ficha('n','b'),0,7,'b');
-        matriz[7][1]=new Campo(new Ficha('n','n'),1,7,'n');
-        matriz[7][2]=new Campo(new Ficha('n','b'),2,7,'b');
-        matriz[7][3]=new Campo(new Ficha('n','n'),3,7,'n');
-        matriz[7][4]=new Campo(new Ficha('n','b'),4,7,'b');
-        matriz[7][5]=new Campo(new Ficha('n','n'),5,7,'n');
-        matriz[7][6]=new Campo(new Ficha('n','b'),6,7,'b');
-        matriz[7][7]=new Campo(new Ficha('n','n'),7,7,'n');
-        
-        matriz[6][0]=new Campo(new Ficha('n','n'),0,6,'n');
-        matriz[6][1]=new Campo(new Ficha('n','b'),1,6,'b');
-        matriz[6][2]=new Campo(new Ficha('n','n'),2,6,'n');
-        matriz[6][3]=new Campo(new Ficha('n','b'),3,6,'b');
-        matriz[6][4]=new Campo(new Ficha('n','n'),4,6,'n');
-        matriz[6][5]=new Campo(new Ficha('n','b'),5,6,'b');
-        matriz[6][6]=new Campo(new Ficha('n','n'),6,6,'n');
-        matriz[6][7]=new Campo(new Ficha('n','b'),7,6,'b');
-    
     }
-    
-    
-    public Campo[][] getMatriz() {
+
+    public Lista<Lista> getMatriz() {
         return matriz;
     }
 
-    public void setMatriz(Campo[][] matriz) {
+    public void setMatriz(Lista<Lista> matriz) {
         this.matriz = matriz;
     }
-
+    
+    
+    
     
     public Campo getCampo(int x, int y){
-    
-        return this.matriz[y][x];
+        
+        Iterador it = new Iterador(matriz);
+        Iterador it2=new Iterador((Lista)it.getPos(x));
+        
+        return (Campo)it2.getPos(y);
     
     }
     

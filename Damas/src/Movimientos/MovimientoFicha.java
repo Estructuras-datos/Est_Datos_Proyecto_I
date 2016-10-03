@@ -39,7 +39,7 @@ public final class MovimientoFicha extends Movimiento{
                 
                 else if(RestaY == -1)
                 {
-                    if(!p.getFirst_move()) p.setFirst_move();
+                    if(!p.getPrimerMovimiento()) p.setPrimerMovimiento();
                     
                     if(to.getY() == 7)
                         throw new Peon_Cast(x_from,y_from,x_to,y_to,p.getColor(),to.getColor());
@@ -49,7 +49,7 @@ public final class MovimientoFicha extends Movimiento{
                 }else if(RestaY == -2){
                     
                     if(m.getCampo(to.getX(),to.getY()-1).getPieza() instanceof Vacio)
-                        return (!p.getFirst_move());
+                        return (!p.getPrimerMovimiento());
                     else return false;
                                     
                 }
@@ -97,7 +97,7 @@ public final class MovimientoFicha extends Movimiento{
                 
                 else if(RestaY == 1)
                 {
-                    if(!p.getFirst_move()) p.setFirst_move();
+                    if(!p.getPrimerMovimiento()) p.setPrimerMovimiento();
                     
                     if(to.getY() == 0)
                     throw new Peon_Cast(x_from,y_from,x_to,y_to,p.getColor(),to.getColor());
@@ -107,7 +107,7 @@ public final class MovimientoFicha extends Movimiento{
                 }else if(RestaY == 2){
                     
                     if(m.getCampo(to.getX(),to.getY()+1).getPieza() instanceof Vacio)
-                    return (!p.getFirst_move());
+                    return (!p.getPrimerMovimiento());
                     
                     else return false;
                 

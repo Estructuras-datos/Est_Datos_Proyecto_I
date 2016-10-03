@@ -35,4 +35,20 @@ public class Iterador<T> {
         actual = inicio;
     }
     
+    public T getPos(int pos) {
+        actual=inicio;
+        if (actual!=null) {
+            int p = 0;
+            while (actual.getSiguiente() != inicio && p < pos) {
+                actual = actual.getSiguiente();
+                p++;
+            }
+            if (p == pos) {
+                return actual.getDato();
+            }
+        }
+        return null;
+
+    }
+    
 }

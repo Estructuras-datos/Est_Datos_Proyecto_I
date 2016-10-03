@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public class Ficha extends Pieza{
     
-   private boolean first_move; 
+   private boolean primerMovimiento; 
    
    //---------------------------------------------------------------------------
    // Metodos
@@ -42,16 +42,16 @@ public class Ficha extends Pieza{
                 break;
         }
        
-        this.first_move = false;
+        this.primerMovimiento = false;
         
     }
 
-    public void setFirst_move() {
-        if(!this.first_move)this.first_move = true;
+    public void setPrimerMovimiento() {
+        if(!this.primerMovimiento)this.primerMovimiento = true;
     }
 
-    public boolean getFirst_move() {
-        return first_move;
+    public boolean getPrimerMovimiento() {
+        return primerMovimiento;
     }
 
     @Override
@@ -91,7 +91,7 @@ public class Ficha extends Pieza{
     public Pieza hacerCopia() {
         Ficha copia=new Ficha(this.color,this.fondo);
         copia.icono=this.icono;
-        copia.first_move=this.first_move;
+        copia.primerMovimiento=this.primerMovimiento;
         
         return copia;
     }

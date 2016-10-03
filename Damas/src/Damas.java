@@ -1,5 +1,6 @@
 
 import Estructuras.Tablero;
+import Juego.Juego;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,6 +16,8 @@ public class Damas {
     public static void main(String[] args) {
         Tablero ta = new Tablero();
         ta.mostrarMatriz();
+        
+        //Juego j=new Juego();
     }
     
 

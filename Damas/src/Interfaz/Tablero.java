@@ -1,6 +1,8 @@
 
 package Interfaz;
 
+import Estructuras.Iterador;
+import Estructuras.Lista;
 import Juego.Campo;
 import java.awt.Container;
 import java.awt.FlowLayout;
@@ -41,7 +43,7 @@ public class Tablero extends JFrame{
     private boolean _turno = false; //define si es el turno del jugador 1 o del 2, para mostrarlo en el panel inferior
     private JLabel  turno, mensaje; //JLabels utilizados para mostrar mensajes varios, numerosTablero y letrasTablero son utlizados para incluir imagenes en el tablero para identificar el eje x,y
   
-    private Campo[][] matriz; //matriz de tipo Campo que contiene las fichas que se imprimen en el tablero
+    private Lista<Lista> matriz; //matriz de tipo Campo que contiene las fichas que se imprimen en el tablero
     private ActionListener listener; //listener para poder desarrollarlo en la clase juego en lugar de tablero
     
 //------------------------------------------------------------------------------------------------
@@ -137,19 +139,24 @@ public class Tablero extends JFrame{
                                  //botones en el tablero ademas se agrega el action listener a cada boton
         
         for(int i=0;i<8;i++)
-            for(int j=0;j<8;j++){
-                panelPiezas.add(matriz[i][j].getBoton());
-                matriz[i][j].getBoton().addActionListener(listener);
+            for (int j = 0; j < 8; j++) {
+                Iterador it = new Iterador(this.matriz);
+                Lista l=(Lista)it.getPos(i);
+                Iterador it2 = new Iterador(l);
+                Campo c=(Campo)it2.getPos(j);
+                panelPiezas.add(c.getBoton());
+                c.getBoton().addActionListener(listener);
             }
-        
-        
     }
     
     public Pieza getFicha(int x, int y ) throws IllegalArgumentException{ //permite obtener la ficha ubicada en la posicion x,y de la matriz
     
         if((x >= 0 && x <9) && ( y >= 0 && y < 9)){
-    
-            return this.matriz[y][x].getPieza();
+            Iterador it = new Iterador(this.matriz);
+            Lista l=(Lista)it.getPos(x);
+            Iterador it2 = new Iterador(l);
+            Campo c=(Campo)it2.getPos(y);
+            return c.getPieza();
         }
         
         else throw new IllegalArgumentException(" Debe estar entre 0 y 8 los dos argumentos");
