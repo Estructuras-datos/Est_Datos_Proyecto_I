@@ -50,13 +50,13 @@ public class Tablero extends JFrame{
 // Constructor  
     public Tablero(Matriz matrz, ActionListener l){
         
-        super("Ajedrez");
+        super("Damas");
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(590,700);
         setVisible(true);
         Container contenedor = getContentPane();
-        setIconImage(new ImageIcon(getClass().getResource("/Imagen/corona.jpg")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Imagen/icon_damas.png")).getImage());
          this.setLocationRelativeTo(null);
         
         listener=l;

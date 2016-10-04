@@ -3,6 +3,7 @@ package Interfaz;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -19,10 +20,11 @@ public class Reglas extends JFrame implements ActionListener{
     private JButton botonSalir; //Este boton es una alternativa al boton de cierre de ventana
     
     public Reglas(){
-        super("Reglas del Juego");
+        super("Reglas Damas");
         this.setSize(770,430);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
+        setIconImage(new ImageIcon(getClass().getResource("/Imagen/icon_damas.png")).getImage());
          this.setLocationRelativeTo(null);
         
         String text=" Reglas:\n"
