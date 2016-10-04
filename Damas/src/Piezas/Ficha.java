@@ -24,7 +24,7 @@ public class Ficha extends Pieza{
                         this.icono = new ImageIcon("iconos/peon_blanco2.png");
                         break;
                     case 'n':
-                        this.icono = new ImageIcon("iconos/peon_blanco.png");
+                        this.icono = new ImageIcon("iconos/ficha_blanca.png");
                         break;
                 }
                 break;
@@ -35,7 +35,7 @@ public class Ficha extends Pieza{
                         this.icono = new ImageIcon("iconos/peon_negro.png");
                         break;
                     case 'n':
-                        this.icono = new ImageIcon("iconos/peon_negro2.png");
+                        this.icono = new ImageIcon("iconos/ficha_negra.png");
                         break;
                 
                 }
@@ -67,7 +67,7 @@ public class Ficha extends Pieza{
                         this.icono = new ImageIcon("iconos/peon_blanco2.png");
                         break;
                     case 'n':
-                        this.icono = new ImageIcon("iconos/peon_blanco.png");
+                        this.icono = new ImageIcon("iconos/ficha_blanca.png");
                         break;
                 }
                 break;
@@ -78,7 +78,7 @@ public class Ficha extends Pieza{
                         this.icono = new ImageIcon("iconos/peon_negro.png");
                         break;
                     case 'n':
-                        this.icono = new ImageIcon("iconos/peon_negro2.png");
+                        this.icono = new ImageIcon("iconos/ficha_negra.png");
                         break;
                 
                 }
