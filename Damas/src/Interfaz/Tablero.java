@@ -1,8 +1,8 @@
 
 package Interfaz;
 
-import Estructuras.Iterador;
-import Estructuras.Lista;
+import Model.Iterador;
+import Model.Lista;
 import Juego.Campo;
 import java.awt.Container;
 import java.awt.FlowLayout;

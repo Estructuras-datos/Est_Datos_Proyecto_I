@@ -1,5 +1,5 @@
 
-import Estructuras.Tablero;
+import Model.Tablero;
 import Juego.Juego;
 
 /*

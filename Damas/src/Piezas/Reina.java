@@ -11,26 +11,13 @@ public class Reina extends Pieza{
         
           switch(color){
         
-            case 'b':
-                switch(fondo){                
-                    case 'b':
-                        this.icono = new ImageIcon("iconos/reina_blanco.png");
-                        break;
-                    case 'n':
-                        this.icono = new ImageIcon("iconos/reina_blanco2.png");
-                        break;
+            case 'b':{
+                this.icono = new ImageIcon("iconos/reina_blanco2.png");
                 }
                 break;
             
-            case 'n':
-                switch(fondo){
-                    case 'b':
-                        this.icono = new ImageIcon("iconos/reina_negro2.png");
-                        break;
-                    case 'n':
-                        this.icono = new ImageIcon("iconos/reina_negro.png");
-                        break;
-                
+            case 'n':{
+                this.icono = new ImageIcon("iconos/reina_negro.png");
                 }
                 break;
         }

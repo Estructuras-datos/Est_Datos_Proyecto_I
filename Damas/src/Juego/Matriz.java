@@ -1,6 +1,6 @@
 package Juego;
-import Estructuras.Iterador;
-import Estructuras.Lista;
+import Model.Iterador;
+import Model.Lista;
 import Piezas.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,8 +14,7 @@ import java.awt.event.ActionListener;
 public class Matriz{
     
     private Lista<Lista> matriz;
-    //private Campo [][] matriz; //matriz de campos, incluye tanto los espacios vacios como las piezas de ajedrez
-    
+   
     public Matriz() {
         
         //matriz=new Campo[8][8];

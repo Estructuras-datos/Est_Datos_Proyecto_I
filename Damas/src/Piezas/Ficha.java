@@ -17,27 +17,13 @@ public class Ficha extends Pieza{
         super(_color,_fondo);
       
         switch(color){
-        
-            case 'b':
-                switch(fondo){                
-                    case 'b':
-                        this.icono = new ImageIcon("iconos/peon_blanco2.png");
-                        break;
-                    case 'n':
-                        this.icono = new ImageIcon("iconos/ficha_blanca.png");
-                        break;
+            case 'b': {
+                this.icono = new ImageIcon("iconos/ficha_blanca.png");
                 }
                 break;
             
-            case 'n':
-                switch(fondo){
-                    case 'b':
-                        this.icono = new ImageIcon("iconos/peon_negro.png");
-                        break;
-                    case 'n':
-                        this.icono = new ImageIcon("iconos/ficha_negra.png");
-                        break;
-                
+            case 'n': {
+                this.icono = new ImageIcon("iconos/ficha_negra.png");              
                 }
                 break;
         }
@@ -61,28 +47,16 @@ public class Ficha extends Pieza{
         
         switch(color){
         
-            case 'b':
-                switch(_fondo){                
-                    case 'b':
-                        this.icono = new ImageIcon("iconos/peon_blanco2.png");
-                        break;
-                    case 'n':
-                        this.icono = new ImageIcon("iconos/ficha_blanca.png");
-                        break;
+            case 'b': {
+                this.icono = new ImageIcon("iconos/ficha_blanca.png");       
                 }
                 break;
             
-            case 'n':
-                switch(_fondo){
-                    case 'b':
-                        this.icono = new ImageIcon("iconos/peon_negro.png");
-                        break;
-                    case 'n':
-                        this.icono = new ImageIcon("iconos/ficha_negra.png");
-                        break;
-                
+            case 'n':{
+                this.icono = new ImageIcon("iconos/ficha_negra.png");
                 }
-                }
+                break;
+        }
         
     }
     
