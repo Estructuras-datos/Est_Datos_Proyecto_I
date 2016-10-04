@@ -34,9 +34,7 @@ public class Juego implements ActionListener{
     private boolean turno = false, error = false;
     private boolean flag1 = false, flag2 = false, flag3 = false;
     private Campo from,to;
-    private boolean ReyToSelected = false;
     private int x_blanco = 0,y_blanco = 4,x_negro = 7,y_negro = 4;
-    private boolean ReyFromSelected = false;
     private Movimiento mov;
     
     public Juego() {
@@ -232,21 +230,20 @@ public class Juego implements ActionListener{
             Reglas r = new Reglas();
             
         }
-        else if(ae.getSource() == tablero.getTablas()){
+        else if(ae.getSource() == tablero.getRetirarse()){
         
-            Jugador _j = new Jugador("",false,'c');
-            JuegoTerminado j = new JuegoTerminado(_j);
-            j.Empate();
+            //Jugador _j = new Jugador("",false,'c');
+            //JuegoTerminado j = new JuegoTerminado(_j);
+            //j.Empate();
             
-           tablero.dispose();
-                    
+           //tablero.dispose();
+           
         }
         else if(SeleccionaFicha(ae)){
        
            
            if(this.InicializaMov()){
            
-               try{
                 
                 
                 if(from.getX() == to.getX() && from.getY() == to.getY()){
@@ -256,8 +253,6 @@ public class Juego implements ActionListener{
                     from = null;
                     to = null;
                     
-                    if(this.ReyFromSelected) ReyFromSelected = !ReyFromSelected;
-                    if(this.ReyToSelected) ReyToSelected = !ReyToSelected;
                     
                     f9 = false;
                     
@@ -271,26 +266,11 @@ public class Juego implements ActionListener{
                     
                     this.CambiaDeTurno();
                    
-                    if(this.ReyToSelected) ReyToSelected = !ReyToSelected;
                     
-                    if(this.ReyFromSelected){
-                        
-                        if(to.getPieza().getColor() == 'b'){
-                        
-                            this.x_blanco = to.getX();
-                            this.y_blanco = to.getY();
-                        }else{
-                            this.x_negro = to.getX();
-                            this.y_negro = to.getY();
-                        }
-                    
-                        ReyFromSelected =! ReyFromSelected;
-                    }
                 
                  }else{ 
                     
                     this.tablero.SetMessage("Movimiento Incorrecto");
-                    if(this.ReyToSelected) ReyToSelected = !ReyToSelected;
                      
                     this.from.getBoton().setBorder(new LineBorder(Color.RED, 3));
                     this.to.getBoton().setBorder(new LineBorder(Color.RED, 3));
@@ -298,18 +278,6 @@ public class Juego implements ActionListener{
                     
                  }
                 
-        
-                
-               }catch(Peon_Cast e){
-                   
-                  if(!this.ReyToSelected){
-                    cp = new CastPeon(from,to);
-                    this.CambiaDeTurno();
-                  }
-               }
-               catch(Enroque e){
-                    this.CambiaDeTurno();
-               }
            }
         
            this.flag1 = false;

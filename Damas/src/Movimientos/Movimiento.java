@@ -30,6 +30,6 @@ public abstract class Movimiento {
             else return (to.getColor() != from.getColor());
         }
                 
-        public abstract boolean Move_From_To(Campo from, Campo to, Matriz m)throws Peon_Cast, Enroque;
+        public abstract boolean Move_From_To(Campo from, Campo to, Matriz m);
     
 }

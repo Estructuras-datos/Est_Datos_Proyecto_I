@@ -36,7 +36,7 @@ public class Tablero extends JFrame{
     private JPanel panelJuego,panelPiezas,panelSuperior,panelInferior,panelMS;//paneles en los que se insertaran los componentes visuales del tablero
     
    
-    private JButton reiniciar, tablas; //botones para reiniciar o salir de la pantalla del tablero
+    private JButton reiniciar, retirarse; //botones para reiniciar o salir de la pantalla del tablero
     private JButton info;
     
     
@@ -63,9 +63,6 @@ public class Tablero extends JFrame{
         matriz=matrz.getMatriz();
         
         //-------------------------------------------------------------------------------------
-        ImageIcon ic=new ImageIcon("iconos/numeros.png");
-        ImageIcon ic2=new ImageIcon("iconos/letras.png");
-        
         // Inicializando Paneles:
         
         ImageIcon InfoImg = new ImageIcon(this.getClass().getResource("/Imagen/Info.png"));
@@ -98,14 +95,15 @@ public class Tablero extends JFrame{
         //Panel Superior (Botones salir y reiniciar)
         
         reiniciar=new JButton("Reiniciar");
+        reiniciar.setToolTipText("Reiniciar el juego a su estado inicial");
         
-        this.tablas = new JButton("Tablas");
-        tablas.setToolTipText("Empatar");
-        tablas.addActionListener(l);
+        this.retirarse = new JButton("Retirarse");
+        retirarse.setToolTipText("Retirarse del Juego");
+        retirarse.addActionListener(l);
         
        
         panelSuperior.add(reiniciar);
-        panelSuperior.add(tablas);
+        panelSuperior.add(retirarse);
         
         reiniciar.addActionListener(listener);
         //------------------------------------------
@@ -196,8 +194,8 @@ public class Tablero extends JFrame{
     }
 
 
-    public JButton getTablas() {
-        return tablas;
+    public JButton getRetirarse() {
+        return retirarse;
     }
     
     

@@ -25,18 +25,25 @@ public class Reglas extends JFrame implements ActionListener{
         this.setVisible(true);
          this.setLocationRelativeTo(null);
         
-        String text=" Consideraciones Generales:\n"
-                + "  \n\n- Los jugadores mueven, alternadamente, una de sus piezas, a excepción del caso del enroque en que se mueven dos, como se explicará más adelante."
-                + "  \n\n- Empieza el jugador que tiene las blancas, lo que supone una pequeña ventaja: se ha visto que el blanco consigue aproximadamente el 55% de los puntos en juego frente a un 45% del negro, en bases de datos que recopilan millones de partidas."
-                + "  \n\n- Si un escaque está ocupado por una pieza propia, no se puede poner otra; en cambio, sí es posible ocupar un escaque que previamente estaba ocupado por una pieza adversaria: dicha pieza propia ocupará este escaque y la pieza adversaria se retirará del juego: este hecho se denomina capturar, comer o matar la pieza contraria por parte de la nuestra."
-                + "  \n\n- Cada pieza tiene su manera de moverse, que se conserva a lo largo de toda la partida, incluyendo los movimientos especiales: captura al paso del peón y enroque."
-                + "  \n\n- Las únicas piezas que pueden saltar son los caballos, o también las torres en el caso excepcional del enroque.Por saltar se entiende que una pieza pase en su movimiento por encima de otra pieza, ya sea adversaria o del mismo bando."
-                + "  \n\n- No hay obligación de comer, pero sí sacar de jaque al rey, no pudiendo mover otra pieza que no involucre dicha acción."
-                + "  \n\n- Con excepción de los peones, las piezas pueden moverse hacia atrás, es decir en dirección a su respectivo jugador."
-                + "  \n\n- Las piezas no pueden saltar, en su movimiento, una por encima de la otra (a excepción del caballo, que puede saltar sobre otras, moviendo en ‘L’, y de la torre, en el enroque)." +
-                    "\n\n- Una pieza no puede ocupar una casilla ocupada por otra pieza del mismo color, pero sí una ocupada por otra del contrario, retirándola del tablero. Esta acción se conoce como “tomar” o “capturar”, y es voluntaria, a decisión del jugador.\n" +
-                    "\n\n- Las casillas a las cuales puede moverse una pieza, se dice que están controladas por ésta. Si una pieza se encuentra dentro de las casillas controladas por una pieza de color contrario, se encuentra atacada por aquélla.\n" +
-                    "\n\n- El rey es la única pieza que no puede moverse o pasar por casillas controladas por piezas contrarias.";
+        String text=" Reglas:\n"
+                + "  \n\n- Se emplea un tablero de 8 filas por 8 columnas y 64 fichas idénticas, redondeadas, blancas y negras.  Juegan dos contendores, uno lleva las de color blanco y el otro las de color negro."
+                + "  \n\n- Las damas es un juego de mesa para dos contrincantes.  El juego consiste en mover las piezas en diagonal (un espacio) en un tablero de 64 cuadros con la intención de capturar (comer) las piezas del contrario saltando por encima de ellas (dos espacios)."
+                + "  \n\n- Las damas es un juego para dos personas en un tablero de 64 casillas de 8 x 8 celdas. El tablero se coloca de manera que cada jugador tenga una casilla blanca en su parte inferior derecha."
+                + "  \n\n- Cada jugador dispone de 12 piezas de un mismo color (blanco o negro) que al principio de la partida se colocan en las casillas negras de las tres filas más próximas a él."
+                + "  \n\n- El objetivo del juego de damas es capturar las fichas del oponente o acorralarlas para que los únicos movimientos que puedan realizar sean los que lleven a su captura."
+                + "  \n\n- Se juega por turnos alternos. Empieza el juego quien tiene las fichas más claras o blancas. En su turno cada jugador mueve una pieza propia."
+                + "  \n\n- El jugador solo puede mover una pieza en su turno. Cada pieza se mueve (cuando no comen) una posición hacia adelante (nunca hacia atrás) diagonalmente a la derecha o a la izquierda, a una posición adyacente y vacía."
+                + "  \n\n- Captura de una pieza oponente. Cuando existe la posibilidad de capturar una pieza del oponente, hay que hacerlo obligatoriamente.  Por ejemplo: Cuando una pieza blanca normal, tiene la posibilidad de capturar a una pieza negra, quiere decir que esta pieza negra, se encuentra adelante, inmediatamente adyacente y diagonal (a la izquierda o derecha) de la pieza blanca. La captura se realiza pasando la pieza blanca por encima de la negra, es decir saltándola y depositándola en el siguiente espacio vacío.  Si el espacio (después de la posición de la pieza negra) no está vacío, no se puede realizar dicha captura." +
+                    "\n\n- Cuando un jugador hace llegar una de sus fichas al final del tablero, entonces puede cambiarla por una reina.\n" +
+                    "\n\n- La reina es una pieza muy importante y es la que tiene mayor prioridad para capturar una pieza del oponente, es decir, si existe una reina y está en su turno, entonces esta debe capturar obligatoriamente una o varias piezas de su oponente, en caso de que se pueda.  Aquí se nota que la reina puede capturar secuencialmente las piezas No1, No.2 y No 3. en una sola jugada.\n" +
+                    "\n\n- Acordarse que la reina siempre tiene prioridad para comer antes que cualquiera otra ficha. Además, en su turno, una pieza normal puede capturar a la reina oponente, si se diera el caso. \n" +
+                    "\n\n- La reina puede desplazarse o moverse, los cuadros que desee sobre las diagonales en las  que se encuentre, puede hacerlo, tanto para adelante como para atrás, siempre y cuando no salte por encima de alguna(s) de sus compañeras. Además, se pueden tener varias reinas en la partida.  La reina no puede capturar o pasar por encima de dos o más piezas consecutivas de igual o diferente color.\n" +
+                    "\n\n- Final del juego o partida. Una partida de damas finaliza cuando estamos en una de estas 4 situaciones:\n" +
+                    "a) Pierde quien se queda sin piezas sobre el tablero.\n" +
+                    "b) Pierde también, si cuando llega el turno de un jugador, éste no puede moverse, puesto que todas sus piezas están bloqueadas.\n" +
+                    "c) Gana quien más piezas tenga, a igual número de piezas gana quién más reinas tenga, y si en esto también se empata la partida termina en tablas.\n" +  
+                    "d) El jugador que tenga muy pocas piezas puede retirarse del juego.\n" +
+                    "\n\n- ";
         
         
         texto=new JTextArea(text, 25, 55);

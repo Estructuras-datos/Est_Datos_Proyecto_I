@@ -22,7 +22,7 @@ public final class MovimientoFicha extends Movimiento{
    }
 
     @Override
-    public boolean Move_From_To(Campo from, Campo to, Matriz m) throws Peon_Cast{
+    public boolean Move_From_To(Campo from, Campo to, Matriz m){
        return true;
         
     }
