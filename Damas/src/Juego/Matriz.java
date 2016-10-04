@@ -77,8 +77,9 @@ public class Matriz{
                         }
                         break;
                 }
-                matriz.agregarFinal(fi);
+                
             }
+            matriz.agregarFinal(fi);
         }
     }
 

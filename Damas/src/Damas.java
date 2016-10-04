@@ -14,10 +14,10 @@ import Juego.Juego;
  */
 public class Damas {
     public static void main(String[] args) {
-        Tablero ta = new Tablero();
-        ta.mostrarMatriz();
+        //Tablero ta = new Tablero();
+        //ta.mostrarMatriz();
         
-        //Juego j=new Juego();
+        Juego j=new Juego();
     }
     
 
