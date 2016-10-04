@@ -15,10 +15,12 @@ public class Campo {
     private int x,y; //coordenadas en el tablero de cada pieza
     private char colorFondo; //define el color de fondo del espacio en el tablero
     private JButton boton; //boton comodin para tener el icono de la pieza que entra por parametro
-    
+    private boolean vacioBlanco=false;
 
     public Campo(Pieza p, int x, int y, char col) {
         pieza = p; 
+        if(p.getColor()=='v' && p.getFondo()=='b')
+            vacioBlanco=true;
         this.x = x; this.y = y; 
         colorFondo = col; 
         
@@ -68,6 +70,10 @@ public class Campo {
 
     public void setBoton(JButton boton) {
         this.boton = boton;
+    }
+
+    public boolean isVacioBlanco() {
+        return vacioBlanco;
     }
     
     

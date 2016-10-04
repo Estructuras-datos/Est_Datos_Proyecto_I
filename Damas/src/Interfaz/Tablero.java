@@ -143,7 +143,8 @@ public class Tablero extends JFrame{
                 Iterador it2 = new Iterador(l);
                 Campo c=(Campo)it2.getPos(j);
                 panelPiezas.add(c.getBoton());
-                c.getBoton().addActionListener(listener);
+                if(!c.isVacioBlanco())
+                    c.getBoton().addActionListener(listener);
             }
     }
     
