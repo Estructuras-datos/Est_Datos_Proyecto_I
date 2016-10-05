@@ -12,7 +12,7 @@ import javax.swing.border.LineBorder;
 public class Campo {
     
     private Pieza pieza; //variable utiliza para almacenar la pieza que entra por parametro
-    private int x,y; //coordenadas en el tablero de cada pieza
+    private int x,y; //coordenadas en el tablero de cada ficha
     private char colorFondo; //define el color de fondo del espacio en el tablero
     private JButton boton; //boton comodin para tener el icono de la pieza que entra por parametro
     private boolean vacioBlanco=false;
@@ -36,7 +36,6 @@ public class Campo {
 
     public void setPieza(Pieza pieza) {
         this.pieza = pieza;
-        pieza.setFondo(colorFondo);
         this.boton.setIcon(pieza.getIcono());
     }
 

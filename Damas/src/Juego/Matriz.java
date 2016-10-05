@@ -2,12 +2,10 @@ package Juego;
 import Model.Iterador;
 import Model.Lista;
 import Piezas.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /*La clase matriz contiene los campos del tablero de juego.
-  Tiene las piezas de ajedrez como atributos, las cuales son inicializadas en un metodo dentro de la misma
-  Luego de ser inicializadas, las piezas se ingresan en la matriz
+  Tiene las piezas de damas como atributos, las cuales son inicializadas en un metodo dentro de la misma
+  Luego de ser inicializadas, las fichas se ingresan en la matriz
 
 */
 
@@ -17,7 +15,6 @@ public class Matriz{
    
     public Matriz() {
         
-        //matriz=new Campo[8][8];
         this.matriz = new Lista<Lista>();
         inicializarTablero();
         

@@ -56,7 +56,7 @@ public class Tablero extends JFrame{
         setSize(590,700);
         setVisible(true);
         Container contenedor = getContentPane();
-        setIconImage(new ImageIcon(getClass().getResource("/Imagen/icon_damas.png")).getImage());
+        setIconImage(new ImageIcon("iconos/icon_damas.png").getImage());
          this.setLocationRelativeTo(null);
         
         listener=l;
@@ -65,7 +65,7 @@ public class Tablero extends JFrame{
         //-------------------------------------------------------------------------------------
         // Inicializando Paneles:
         
-        ImageIcon InfoImg = new ImageIcon(this.getClass().getResource("/Imagen/Info.png"));
+        ImageIcon InfoImg = new ImageIcon("iconos/Info.png");
         this.info = new JButton();
         info.setIcon(InfoImg);
         info.setToolTipText("Reglas del Juego");

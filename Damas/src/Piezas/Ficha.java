@@ -6,12 +6,11 @@ import javax.swing.ImageIcon;
 
 public class Ficha extends Pieza{
     
-   private boolean primerMovimiento; 
    
    //---------------------------------------------------------------------------
    // Metodos
    
-    public Ficha(char _color, char _fondo)
+    public Ficha(char _color, char _fondo)  //el color de fondo no se usa en las fichas pero si en los espacios vacios para definir cual ocupa listener y cual no
     {
         
         super(_color,_fondo);
@@ -28,47 +27,10 @@ public class Ficha extends Pieza{
                 break;
         }
        
-        this.primerMovimiento = false;
         
     }
 
-    public void setPrimerMovimiento() {
-        if(!this.primerMovimiento)this.primerMovimiento = true;
-    }
-
-    public boolean getPrimerMovimiento() {
-        return primerMovimiento;
-    }
-
-    @Override
-    public void setFondo(char _fondo) {
    
-        icono = null;
-        
-        switch(color){
-        
-            case 'b': {
-                this.icono = new ImageIcon("iconos/ficha_blanca.png");       
-                }
-                break;
-            
-            case 'n':{
-                this.icono = new ImageIcon("iconos/ficha_negra.png");
-                }
-                break;
-        }
-        
-    }
-    
-    
-   @Override
-    public Pieza hacerCopia() {
-        Ficha copia=new Ficha(this.color,this.fondo);
-        copia.icono=this.icono;
-        copia.primerMovimiento=this.primerMovimiento;
-        
-        return copia;
-    }
     
     //--------------------------------------------------------------------------
     

@@ -1,5 +1,5 @@
 
-import Model.Tablero;
+import Model.TableroFalso;
 import Juego.Juego;
 
 /*

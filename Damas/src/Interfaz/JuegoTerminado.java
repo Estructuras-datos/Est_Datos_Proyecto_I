@@ -35,7 +35,7 @@ public class JuegoTerminado extends JFrame implements ActionListener {
         ((JPanel)getContentPane()).setOpaque(false);
         this.setLocationRelativeTo(null);
         
-        setIconImage(new ImageIcon(getClass().getResource("/Imagen/corona.jpg")).getImage());
+        setIconImage(new ImageIcon("iconos/icon_damas.png").getImage());
         ImageIcon uno=new ImageIcon(this.getClass().getResource("/Imagen/Fondo2.jpeg"));
                
         JLabel fondo= new JLabel();

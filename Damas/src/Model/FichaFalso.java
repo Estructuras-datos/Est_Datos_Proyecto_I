@@ -9,14 +9,14 @@ package Model;
  *
  * @authors Denis Rodriguez, Sergio Vega
  */
-public class Ficha {
+public class FichaFalso {
     
     private char color;
     private boolean esReina;
     private int posicion;
     private boolean usada;
 
-    public Ficha(int posicion) {
+    public FichaFalso(int posicion) {
         this.color = '%';
         this.esReina = false;
         this.posicion = posicion;
@@ -24,7 +24,7 @@ public class Ficha {
     }
     
     
-    public Ficha(int posicion, char color) {
+    public FichaFalso(int posicion, char color) {
         this.color = color;
         this.esReina = false;
         this.posicion = posicion;

@@ -10,10 +10,10 @@ package Model;
  * @authos Denis Rodriguez, Sergio Vega
  */
 
-public class Tablero {
+public class TableroFalso {
     private Lista<Fila> matriz;
 
-    public Tablero() {
+    public TableroFalso() {
         this.matriz = new Lista<Fila>();
         inicializarTablero();
     }

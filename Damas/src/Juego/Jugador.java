@@ -22,11 +22,11 @@ public final class Jugador{
             return num;
         }
 
-        public boolean Id() {
+        public boolean getId() {
             return id;
         }
         
-        public char Color(){
+        public char getColor(){
              return color;
         }
 

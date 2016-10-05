@@ -1,7 +1,5 @@
 
 package Juego;
-import Exception.Enroque;
-import Exception.Peon_Cast;
 import Interfaz.*;
 import Interfaz.Tablero;
 import Movimientos.*;
@@ -30,10 +28,9 @@ public class Juego implements ActionListener{
     private Tablero tablero;
     
     private Jugador jugador1, jugador2;
-    private CastPeon cp;
     private boolean turno = false, error = false;
     private boolean flag1 = false, flag2 = false, flag3 = false;
-    private Campo from,to;
+    private Campo campoInicial,campoDestino;
     private int x_blanco = 0,y_blanco = 4,x_negro = 7,y_negro = 4;
     private Movimiento mov;
     
@@ -53,7 +50,7 @@ public class Juego implements ActionListener{
         tablero = new Tablero(matriz,this);
     }
 
-    private char CasteaInt(int i){
+    private char CasteaInt(int i){ //uilizado para imprimir la posicion en la que se encuentra la ficha seleccionada
     
         if(i == 0) return 'A';
         if(i == 1) return 'B';
@@ -82,15 +79,15 @@ public class Juego implements ActionListener{
     */
     private boolean ValidaSeleccion(Campo _from){
     
-        if(turno == jugador1.Id())
-             if(_from.getPieza().getColor() == jugador1.Color()){
+        if(turno == jugador1.getId())
+             if(_from.getPieza().getColor() == jugador1.getColor()){
                  return true;
              }else{
              
                  JOptionPane.showMessageDialog(null,"El turno es del:"+jugador1.getNum()+"\n"+"Debe seleccionar fichas blancas.","Error",JOptionPane.ERROR_MESSAGE);
              }
             
-        else if(_from.getPieza().getColor() == jugador2.Color()){
+        else if(_from.getPieza().getColor() == jugador2.getColor()){
                  return true;
              }else{
              
@@ -117,8 +114,8 @@ public class Juego implements ActionListener{
     
         if(flag1 && flag2){
         
-                 if(from.getPieza() instanceof Ficha)   mov = new MovimientoFicha();
-            else if(from.getPieza() instanceof Reina)  mov = new MovimientoReina();
+                 if(campoInicial.getPieza() instanceof Ficha)   mov = new MovimientoFicha();
+            else if(campoInicial.getPieza() instanceof Reina)  mov = new MovimientoReina();
             else return false;
             
             return true;
@@ -139,11 +136,11 @@ public class Juego implements ActionListener{
     private boolean SeleccionaFicha(ActionEvent ae){
        if(this.error){
        
-            this.from.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
-            this.to.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
+            this.campoInicial.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
+            this.campoDestino.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
             if(error) error = !error;
-            from = null;
-            to = null;
+            campoInicial = null;
+            campoDestino = null;
        }
         
         
@@ -152,7 +149,7 @@ public class Juego implements ActionListener{
         int x = 0;
         int y = 0;
         
-        while( true == f){
+        while( f){  //Este while busca la ficha seleccionada, comienza en 0,0 -> 1,0 -> 2,0.... 0,1 -> 1,1... 7,7
         
             if(ae.getSource() == matriz.getCampo(x, y).getBoton()){
                  
@@ -185,27 +182,27 @@ public class Juego implements ActionListener{
       
         if(!flag1){
        
-            if(aux.getPieza() instanceof Vacio) return false;
+            if(aux.getPieza() instanceof Vacio) return false;//si la ficha seleccionada es vacio se cancela la seleccion
             
             else if(!this.ValidaSeleccion(aux)){
             
-                from = null;
+                campoInicial = null;
                 this.tablero.SetMessage("Elija la ficha a mover");
             }else{ 
                 flag1 = true;
-                from = aux;
+                campoInicial = aux;
                 this.tablero.SetMessage("Ficha: "+aux.getPieza().getClass().getSimpleName()
                         +"  [ "+CasteaInt(aux.getX())+(aux.getY()+1)+" ]");
                 
-                this.from.getBoton().setBorder(new LineBorder(Color.YELLOW, 3));
+                this.campoInicial.getBoton().setBorder(new LineBorder(Color.YELLOW, 3));  //ficha seleccionada correctamente por lo que se pone el borde en amarillo
              
             }
                     
         }else if(!flag2){
        
             flag2 = true;
-            to = aux;
-            this.from.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
+            campoDestino = aux;
+            this.campoInicial.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
             return true;
         }
         
@@ -246,12 +243,12 @@ public class Juego implements ActionListener{
            
                 
                 
-                if(from.getX() == to.getX() && from.getY() == to.getY()){
+                if(campoInicial.getX() == campoDestino.getX() && campoInicial.getY() == campoDestino.getY()){ //si esta seleccionando la misma ficha como destino
           
-                    this.from.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
+                    this.campoInicial.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
                     this.tablero.SetMessage("Eliga la ficha a mover");
-                    from = null;
-                    to = null;
+                    campoInicial = null;
+                    campoDestino = null;
                     
                     
                     f9 = false;
@@ -260,9 +257,9 @@ public class Juego implements ActionListener{
                 
                  
                 if(f9)
-                    if(mov.Move_From_To(from, to, this.matriz)){
+                    if(mov.Move_From_To(campoInicial, campoDestino, this.matriz)){
                                
-                    this.reemplazarFichas(from,to);
+                    this.reemplazarFichas(campoInicial,campoDestino);
                     
                     this.CambiaDeTurno();
                    
@@ -272,8 +269,8 @@ public class Juego implements ActionListener{
                     
                     this.tablero.SetMessage("Movimiento Incorrecto");
                      
-                    this.from.getBoton().setBorder(new LineBorder(Color.RED, 3));
-                    this.to.getBoton().setBorder(new LineBorder(Color.RED, 3));
+                    this.campoInicial.getBoton().setBorder(new LineBorder(Color.RED, 3));
+                    this.campoDestino.getBoton().setBorder(new LineBorder(Color.RED, 3));
                     this.error = true;
                     
                  }

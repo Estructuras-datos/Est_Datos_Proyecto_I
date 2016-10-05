@@ -16,7 +16,7 @@ public abstract class Pieza {
     Los atributos char, dependiendo lo que especifiquen, el atributo icono se le
     va a dar una imagen automaticamente.
 
-    El boton es para el interfaz - usiario, el cual va a ser un icono. 
+    El boton es para el interfaz - usuario, el cual va a ser un icono. 
 
     Cuando se hereda esta clase, hay un metodo abstracto llamado setFondo, lo 
     cual dependiendo el campo donde esta cambia el fondo.
@@ -48,13 +48,11 @@ public abstract class Pieza {
         
     }
     
-    public abstract Pieza hacerCopia();
     
     public final ImageIcon getIcono() {
         return icono;
     }
 
-    public abstract void setFondo(char _fondo);
     
     public final  char getFondo(){
         return fondo;

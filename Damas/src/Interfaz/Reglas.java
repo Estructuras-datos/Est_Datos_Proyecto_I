@@ -24,7 +24,7 @@ public class Reglas extends JFrame implements ActionListener{
         this.setSize(770,430);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
-        setIconImage(new ImageIcon(getClass().getResource("/Imagen/icon_damas.png")).getImage());
+        setIconImage(new ImageIcon("iconos/icon_damas.png").getImage());
          this.setLocationRelativeTo(null);
         
         String text=" Reglas:\n"

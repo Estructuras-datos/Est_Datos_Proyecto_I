@@ -1,6 +1,4 @@
 package Movimientos;
-import Exception.Enroque;
-import Exception.Peon_Cast;
 import Juego.Matriz;
 import Juego.Campo;
 import Piezas.Pieza;
@@ -23,13 +21,7 @@ import Piezas.Vacio;
 */
 
 public abstract class Movimiento {
-    
-        protected final boolean Verifica_Color_Difrente_Fichas(Pieza to, Pieza from){
         
-            if(to instanceof Vacio) return true;
-            else return (to.getColor() != from.getColor());
-        }
-                
         public abstract boolean Move_From_To(Campo from, Campo to, Matriz m);
     
 }
