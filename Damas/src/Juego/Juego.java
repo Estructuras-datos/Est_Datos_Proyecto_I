@@ -37,7 +37,6 @@ public class Juego implements ActionListener{
     
     
     public final void nuevoJuego(){
-        
         jugador1=new Jugador("1",'A','b');
         jugador2=new Jugador("2",'B','n');
         matriz=new Matriz();
@@ -62,10 +61,8 @@ public class Juego implements ActionListener{
         }else{
             turno = 'A';
         }
-        
         this.tablero.CambiaTurnoJLabel();
         this.tablero.SetMessage("Elija la ficha a mover");
-       
     }
    
     
@@ -141,31 +138,50 @@ public class Juego implements ActionListener{
         int x = 0;
         int y = 0;
         
-        while( f){  //Este while busca la ficha seleccionada, comienza en 0,0 -> 1,0 -> 2,0.... 0,1 -> 1,1... 7,7
-            if(ae.getSource() == matriz.getCampo(x, y).getBoton()){
-                aux = matriz.getCampo(x, y);
-                f = false;
-            }
-            else if(ae.getSource() == matriz.getCampo(x+1, y).getBoton()){
-                aux = matriz.getCampo(x+1, y);
-                f = false;
-            }
-            else if(ae.getSource() == matriz.getCampo(x+2, y).getBoton()){
-                aux = matriz.getCampo(x+2, y);
-                f = false;
-            }
-            else if(ae.getSource() == matriz.getCampo(x+3, y).getBoton()){
-                aux = matriz.getCampo(x+3, y);  
-                f = false;
-            }else{
-                x += 4 ;
-                if(x == 8){
+        while(f){ //Este while busca la ficha seleccionada, comienza en 0,0 -> 1,0 -> 2,0.... 0,1 -> 1,1... 7,7
+            if(y<8){
+                if(ae.getSource() == matriz.getCampo(x, y).getBoton()){
+                    aux = matriz.getCampo(x, y);
+                    f = false;
+                }else{
                     y++;
-                    x = 0;
-                    if(y == 8) return false;
                 }
+            }else{
+                if(x<8){
+                    x++;
+                    y=0;
+                }else{
+                    return false;
+                }
+                
             }
         }
+        
+//        while( f){  //Este while busca la ficha seleccionada, comienza en 0,0 -> 1,0 -> 2,0.... 0,1 -> 1,1... 7,7
+//            if(ae.getSource() == matriz.getCampo(x, y).getBoton()){
+//                aux = matriz.getCampo(x, y);
+//                f = false;
+//            }
+//            else if(ae.getSource() == matriz.getCampo(x+1, y).getBoton()){
+//                aux = matriz.getCampo(x+1, y);
+//                f = false;
+//            }
+//            else if(ae.getSource() == matriz.getCampo(x+2, y).getBoton()){
+//                aux = matriz.getCampo(x+2, y);
+//                f = false;
+//            }
+//            else if(ae.getSource() == matriz.getCampo(x+3, y).getBoton()){
+//                aux = matriz.getCampo(x+3, y);  
+//                f = false;
+//            }else{
+//                x += 4 ;
+//                if(x == 8){
+//                    y++;
+//                    x = 0;
+//                    if(y == 8) return false;
+//                }
+//            }
+//        }
               
         if(!flag1){
             if(aux.getPieza() instanceof Vacio) return false;//si la ficha seleccionada es vacio se cancela la seleccion
