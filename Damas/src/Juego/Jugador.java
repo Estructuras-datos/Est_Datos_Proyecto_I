@@ -4,10 +4,10 @@ package Juego;
 public final class Jugador{
 
     private String num;
-    private boolean id;
+    private char id;
     private char color;
 
-        public Jugador(String num, boolean id, char _color) {
+        public Jugador(String num, char id, char _color) {
             this.num = num;
             this.id = id;
             color = _color;
@@ -22,7 +22,7 @@ public final class Jugador{
             return num;
         }
 
-        public boolean getId() {
+        public char getId() {
             return id;
         }
         

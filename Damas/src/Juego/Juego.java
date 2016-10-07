@@ -23,7 +23,8 @@ public class Juego implements ActionListener{
     private Matriz matriz;
     private Tablero tablero;
     private Jugador jugador1, jugador2;
-    private boolean turno = false, error = false;
+    private char turno = 'A';
+    private boolean error = false;
     private boolean flag1 = false, flag2 = false, flag3 = false;
     private Campo campoInicial,campoDestino;
     private int x_blanco = 0,y_blanco = 4,x_negro = 7,y_negro = 4;
@@ -37,8 +38,8 @@ public class Juego implements ActionListener{
     
     public final void nuevoJuego(){
         
-        jugador1=new Jugador("1",false,'b');
-        jugador2=new Jugador("2",true,'n');
+        jugador1=new Jugador("1",'A','b');
+        jugador2=new Jugador("2",'B','n');
         matriz=new Matriz();
         tablero = new Tablero(matriz,this);
     }
@@ -56,7 +57,12 @@ public class Juego implements ActionListener{
     }
     
     private void CambiaDeTurno(){
-        turno = !this.turno;
+        if(turno == 'A'){
+            turno = 'B';
+        }else{
+            turno = 'A';
+        }
+        
         this.tablero.CambiaTurnoJLabel();
         this.tablero.SetMessage("Elija la ficha a mover");
        
@@ -71,7 +77,7 @@ public class Juego implements ActionListener{
     private boolean ValidaSeleccion(Campo _from){
     
         if(turno == jugador1.getId())
-             if(_from.getPieza().getColor() == jugador1.getColor()){
+             if(_from.getPieza().getColor() == jugador1.getColor() ){
                  return true;
              }else{
              
