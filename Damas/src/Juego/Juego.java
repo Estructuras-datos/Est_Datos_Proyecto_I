@@ -12,9 +12,7 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 /*
-    El juego, es la clase control del juego, es la que se encarga de unir las
-    piezas con los movimientos, la encargada de cambiar fichas, de cambiar
-    mensajes y manejar los cronometros.
+    El juego, es la clase control del juego.
 
     En esta clase, se maneja el ActionListener que se le asigno a 
     los botones en la clase tablero y se encarga de darle un adecuado 

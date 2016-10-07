@@ -44,7 +44,7 @@ public class Matriz{
                                     fi.agregarFinal(new Campo(new Ficha('b', 'n'), i, j, 'n'));
 
                                 } else { //fichas vacias
-                                    fi.agregarFinal(new Campo(new Vacio('n'), i, j, 'n')); //posiciones nulas
+                                    fi.agregarFinal(new Campo(new Vacio('n'), i, j, 'n')); 
 
                                 }
                                 break;
