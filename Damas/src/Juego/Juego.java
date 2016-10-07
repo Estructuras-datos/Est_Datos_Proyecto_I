@@ -37,8 +37,8 @@ public class Juego implements ActionListener{
     
     public final void nuevoJuego(){
         
-        jugador1=new Jugador("Jugador 1",false,'b');
-        jugador2=new Jugador("Jugador 2",true,'n');
+        jugador1=new Jugador("1",false,'b');
+        jugador2=new Jugador("2",true,'n');
         matriz=new Matriz();
         tablero = new Tablero(matriz,this);
     }

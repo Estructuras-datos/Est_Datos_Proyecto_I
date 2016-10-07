@@ -43,9 +43,14 @@ public class JuegoTerminado extends JFrame implements ActionListener {
         fondo.setIcon(uno);
         getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER);
         fondo.setBounds(0,0,900,600);
-       
         
-        this.ganador = new JLabel("Ganador  "+_ganador.getNum());
+        String fichasGanador;
+        if(_ganador.getNum()=="1"){
+            fichasGanador="Fichas Blancas";
+        }
+        else fichasGanador="Fichas Negras";
+        
+        this.ganador = new JLabel("Ganador  "+fichasGanador);
         ganador.setFont(new Font(ganador.getFont().getName(),Font.BOLD|Font.ITALIC,35));
         ganador.setBounds(80,170, 500,50);
         ganador.setForeground(Color.WHITE);
