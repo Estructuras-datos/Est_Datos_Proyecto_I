@@ -2,17 +2,17 @@ package Movimientos;
 
 import Juego.Campo;
 import Juego.Matriz;
-import Piezas.Ficha;
 import Piezas.Vacio;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public final class MovimientoFicha extends Movimiento{
-
-   
+    
+    int fichasNegras;
+    int fichasBlancas;
     
     public MovimientoFicha(){
-   }
+        this.fichasNegras = 12;
+        this.fichasBlancas = 12;
+    }
 
     @Override
     public boolean Move_From_To(Campo from, Campo to, Matriz m){
@@ -30,14 +30,23 @@ public final class MovimientoFicha extends Movimiento{
                         return true;
                     }
                 }else if(to.getX() == from.getX()-2){//si es el caso de que va a comer
-                    if(to.getY() == from.getY()-2 || to.getY() == from.getY()+2){//verificar que sea un campo valido
+                    if(to.getY() == from.getY()-2 ){
                         Campo auxIzq = m.getCampo(from.getX()-1, from.getY()-1);
+                        if(!( auxIzq.getPieza() instanceof Vacio && auxIzq.getPieza().getFondo() == 'n') && auxIzq.getPieza().getColor() == 'n'){
+                            auxIzq.setPieza(new Vacio('n'));
+                            this.fichasNegras--;
+                            return true;
+                        }
+                    }else if(to.getY() == from.getY()+2){
                         Campo auxDer = m.getCampo(from.getX()-1, from.getY()+1);
-                        if((!( auxIzq.getPieza() instanceof Vacio && auxIzq.getPieza().getFondo() == 'n') && auxIzq.getPieza().getColor() == 'n')
-                                || (!( auxDer.getPieza() instanceof Vacio && auxDer.getPieza().getFondo() == 'n') && auxDer.getPieza().getColor() == 'n')){ //verificar que haya una ficha para comer
+                        if(!( auxDer.getPieza() instanceof Vacio && auxDer.getPieza().getFondo() == 'n') && auxDer.getPieza().getColor() == 'n'){
+                            auxDer.setPieza(new Vacio('n'));
+                            this.fichasNegras--;
                             return true;
                         }
                     }
+                    
+
                 }
             }
         } else if(from.getPieza().getColor() == 'n'){
@@ -47,14 +56,22 @@ public final class MovimientoFicha extends Movimiento{
                         return true;
                     }
                 }else if(to.getX() == from.getX()+2){//si es el caso de que va a comer
-                    if(to.getY() == from.getY()-2 || to.getY() == from.getY()+2){//verificar que sea un campo valido
+                    if(to.getY() == from.getY()-2){
                         Campo auxIzq = m.getCampo(from.getX()+1, from.getY()-1);
+                        if(!( auxIzq.getPieza() instanceof Vacio && auxIzq.getPieza().getFondo() == 'n') && auxIzq.getPieza().getColor() == 'b'){
+                            auxIzq.setPieza(new Vacio('n'));
+                            this.fichasBlancas--;
+                            return true;
+                        }
+                    }else if(to.getY() == from.getY()+2){
                         Campo auxDer = m.getCampo(from.getX()+1, from.getY()+1);
-                        if((!( auxIzq.getPieza() instanceof Vacio && auxIzq.getPieza().getFondo() == 'n') && auxIzq.getPieza().getColor() == 'b')
-                                || (!( auxDer.getPieza() instanceof Vacio && auxDer.getPieza().getFondo() == 'n') && auxDer.getPieza().getColor() == 'b')){ //verificar que haya una ficha para comer
+                        if(!( auxDer.getPieza() instanceof Vacio && auxDer.getPieza().getFondo() == 'n') && auxDer.getPieza().getColor() == 'b'){
+                            auxDer.setPieza(new Vacio('n'));
+                            this.fichasBlancas--;
                             return true;
                         }
                     }
+                    
                 }
             }
         }
