@@ -6,12 +6,8 @@ import Piezas.Vacio;
 
 public final class MovimientoFicha extends Movimiento{
     
-    int fichasNegras;
-    int fichasBlancas;
     
     public MovimientoFicha(){
-        this.fichasNegras = 12;
-        this.fichasBlancas = 12;
     }
 
     @Override
@@ -34,14 +30,14 @@ public final class MovimientoFicha extends Movimiento{
                         Campo auxIzq = m.getCampo(from.getX()-1, from.getY()-1);
                         if(!( auxIzq.getPieza() instanceof Vacio && auxIzq.getPieza().getFondo() == 'n') && auxIzq.getPieza().getColor() == 'n'){
                             auxIzq.setPieza(new Vacio('n'));
-                            this.fichasNegras--;
+                            m.restaNegras();
                             return true;
                         }
                     }else if(to.getY() == from.getY()+2){
                         Campo auxDer = m.getCampo(from.getX()-1, from.getY()+1);
                         if(!( auxDer.getPieza() instanceof Vacio && auxDer.getPieza().getFondo() == 'n') && auxDer.getPieza().getColor() == 'n'){
                             auxDer.setPieza(new Vacio('n'));
-                            this.fichasNegras--;
+                            m.restaNegras();
                             return true;
                         }
                     }
@@ -60,14 +56,14 @@ public final class MovimientoFicha extends Movimiento{
                         Campo auxIzq = m.getCampo(from.getX()+1, from.getY()-1);
                         if(!( auxIzq.getPieza() instanceof Vacio && auxIzq.getPieza().getFondo() == 'n') && auxIzq.getPieza().getColor() == 'b'){
                             auxIzq.setPieza(new Vacio('n'));
-                            this.fichasBlancas--;
+                            m.restaBlancas();
                             return true;
                         }
                     }else if(to.getY() == from.getY()+2){
                         Campo auxDer = m.getCampo(from.getX()+1, from.getY()+1);
                         if(!( auxDer.getPieza() instanceof Vacio && auxDer.getPieza().getFondo() == 'n') && auxDer.getPieza().getColor() == 'b'){
                             auxDer.setPieza(new Vacio('n'));
-                            this.fichasBlancas--;
+                            m.restaBlancas();
                             return true;
                         }
                     }

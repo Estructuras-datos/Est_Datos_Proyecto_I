@@ -13,7 +13,7 @@ public class Campo {
     
     private Pieza pieza; //variable utiliza para almacenar la pieza que entra por parametro
     private int x,y; //coordenadas en el tablero de cada ficha
-    private char colorFondo; //define el color de fondo del espacio en el tablero
+    private char colorFondo; //define el color de fondo del espacio en el tablero, principalmente utilizado para dejar los espacios blancos sin listener
     private JButton boton; //boton comodin para tener el icono de la pieza que entra por parametro
     private boolean vacioBlanco=false;
 

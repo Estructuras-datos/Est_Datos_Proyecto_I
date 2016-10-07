@@ -29,12 +29,14 @@ public class Juego implements ActionListener{
     private int x_blanco = 0,y_blanco = 4,x_negro = 7,y_negro = 4;
     private Movimiento mov;
     
+    
     public Juego() {
         nuevoJuego();
      }
     
     
     public final void nuevoJuego(){
+        
         jugador1=new Jugador("Jugador 1",false,'b');
         jugador2=new Jugador("Jugador 2",true,'n');
         matriz=new Matriz();
@@ -215,6 +217,14 @@ public class Juego implements ActionListener{
                 if(f9)
                     if(mov.Move_From_To(campoInicial, campoDestino, this.matriz)){
                         this.reemplazarFichas(campoInicial,campoDestino);
+                        if(matriz.getContadorNegras()==0){
+                            tablero.dispose();
+                            JuegoTerminado juegoTer = new JuegoTerminado(this.jugador1);
+                        }
+                        else if(matriz.getContadorBlancas()==0){
+                            tablero.dispose();
+                            JuegoTerminado juegoTer = new JuegoTerminado(this.jugador2);
+                        }
                         this.CambiaDeTurno();
                     }else{
                         this.tablero.SetMessage("Movimiento Incorrecto");
@@ -231,6 +241,10 @@ public class Juego implements ActionListener{
     public void reemplazarFichas(Campo from, Campo to){
         to.setPieza(from.getPieza());
         from.setPieza(new Vacio(from.getColor()));
+    }
+    
+    public void restaFichas(){
+        
     }
     
 }

@@ -12,10 +12,13 @@ import Piezas.*;
 public class Matriz{
     
     private Lista<Lista> matriz;
-   
+    private int contadorBlancas, contadorNegras;
+    
     public Matriz() {
         
         this.matriz = new Lista<Lista>();
+        contadorBlancas=12;
+        contadorNegras=12;
         inicializarTablero();
         
     }
@@ -98,6 +101,23 @@ public class Matriz{
         return (Campo)it2.getPos(y);
     
     }
+    
+    public void restaNegras(){
+        contadorNegras--;
+    }
+    
+    public void restaBlancas(){
+        contadorBlancas--;
+    }
+
+    public int getContadorBlancas() {
+        return contadorBlancas;
+    }
+
+    public int getContadorNegras() {
+        return contadorNegras;
+    }
+    
     
     
 }

@@ -35,8 +35,9 @@ public class JuegoTerminado extends JFrame implements ActionListener {
         ((JPanel)getContentPane()).setOpaque(false);
         this.setLocationRelativeTo(null);
         
+        
         setIconImage(new ImageIcon("iconos/icon_damas.png").getImage());
-        ImageIcon uno=new ImageIcon(this.getClass().getResource("/Imagen/Fondo2.jpeg"));
+        ImageIcon uno=new ImageIcon("iconos/Fondo2.jpeg");
                
         JLabel fondo= new JLabel();
         fondo.setIcon(uno);
@@ -50,10 +51,9 @@ public class JuegoTerminado extends JFrame implements ActionListener {
         ganador.setForeground(Color.WHITE);
         add(ganador);
         
-        
        
         this.msg     = new JLabel();
-        ImageIcon _img = new ImageIcon(new ImageIcon(getClass().getResource("/Imagen/GameOver.png")).getImage());
+        ImageIcon _img = new ImageIcon("iconos/GameOver.png");
         msg.setIcon(_img);
         msg.setBounds(60,20,700,100);
         add(msg);
@@ -79,6 +79,10 @@ public class JuegoTerminado extends JFrame implements ActionListener {
         if(ae.getSource() == JugarNuevo){
         
             Juego.Juego ob = new Juego.Juego();
+            this.dispose();
+        }
+        
+        else if(ae.getSource() == Salir){
             this.dispose();
         }
     }
