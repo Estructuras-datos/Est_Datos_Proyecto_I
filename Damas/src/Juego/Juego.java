@@ -216,15 +216,9 @@ public class Juego implements ActionListener{
 
                 if(f9)
                     if(mov.Move_From_To(campoInicial, campoDestino, this.matriz)){
+                        
                         this.reemplazarFichas(campoInicial,campoDestino);
-                        if(matriz.getContadorNegras()==0){
-                            tablero.dispose();
-                            JuegoTerminado juegoTer = new JuegoTerminado(this.jugador1);
-                        }
-                        else if(matriz.getContadorBlancas()==0){
-                            tablero.dispose();
-                            JuegoTerminado juegoTer = new JuegoTerminado(this.jugador2);
-                        }
+                        this.verificaGane();
                         this.CambiaDeTurno();
                     }else{
                         this.tablero.SetMessage("Movimiento Incorrecto");
@@ -239,12 +233,29 @@ public class Juego implements ActionListener{
     }
     
     public void reemplazarFichas(Campo from, Campo to){
-        to.setPieza(from.getPieza());
-        from.setPieza(new Vacio(from.getColor()));
+        if (from.getPieza().getColor() == 'b' && to.getX() == 0) { //si el destino es el borde del contrario se convierte en reina
+            to.setPieza(new Reina('b', 'n'));
+            from.setPieza(new Vacio(from.getColor()));
+        }
+        else if(from.getPieza().getColor() == 'n' && to.getX() == 7){
+            to.setPieza(new Reina('n', 'n'));
+            from.setPieza(new Vacio(from.getColor()));
+        }
+        else {
+            to.setPieza(from.getPieza());
+            from.setPieza(new Vacio(from.getColor()));
+        }
     }
     
-    public void restaFichas(){
-        
+    public void verificaGane(){
+        if (matriz.getContadorNegras() == 0) {
+            tablero.dispose();
+            JuegoTerminado juegoTer = new JuegoTerminado(this.jugador1);
+        } 
+        else if (matriz.getContadorBlancas() == 0) {
+            tablero.dispose();
+            JuegoTerminado juegoTer = new JuegoTerminado(this.jugador2);
+        }
     }
     
 }
