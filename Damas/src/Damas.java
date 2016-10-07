@@ -1,5 +1,5 @@
 
-import Model.TableroFalso;
+
 import Juego.Juego;
 
 /*
@@ -12,11 +12,9 @@ import Juego.Juego;
  *
  * @authors Denis Rodriguez, Sergio Vega
  */
+
 public class Damas {
     public static void main(String[] args) {
-        //Tablero ta = new Tablero();
-        //ta.mostrarMatriz();
-        
         Juego j=new Juego();
     }
     
