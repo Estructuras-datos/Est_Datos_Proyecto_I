@@ -4,7 +4,13 @@ import Juego.Campo;
 import Juego.Matriz;
 import Piezas.Vacio;
 
+/**
+ *
+ * @authors Denis Rodriguez, Sergio Vega
+ */
+
 public final class MovimientoFicha extends Movimiento{
+    
     private boolean estaComiendo = false;
     
     public MovimientoFicha(){
@@ -136,6 +142,5 @@ public final class MovimientoFicha extends Movimiento{
     public boolean estaComiendo() {
         return estaComiendo;
     }
-    
     
 }

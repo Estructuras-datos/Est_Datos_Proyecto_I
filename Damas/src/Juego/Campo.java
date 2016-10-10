@@ -4,10 +4,10 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
-/*
-    El campo, es una clase la de la cual se va a basar el tabler, 
-    posee la pieza, las coordenadas, el color de fondo y el boton.
-*/
+/**
+ *
+ * @authors Denis Rodriguez, Sergio Vega
+ */
 
 public class Campo {
     
@@ -23,12 +23,9 @@ public class Campo {
             vacioBlanco=true;
         this.x = x; this.y = y; 
         colorFondo = col; 
-        
         boton=new JButton(p.getIcono());
         boton.setBorder(new LineBorder(Color.WHITE, 1));
     }
-    
-    
 
     public Pieza getPieza() {
         return pieza;
@@ -74,7 +71,5 @@ public class Campo {
     public boolean isVacioBlanco() {
         return vacioBlanco;
     }
-    
-    
     
 }

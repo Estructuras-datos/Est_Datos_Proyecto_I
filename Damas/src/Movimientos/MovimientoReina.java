@@ -5,11 +5,11 @@ import Juego.Matriz;
 import Piezas.Vacio;
 
 public class MovimientoReina extends Movimiento {
+    
     private boolean estaComiendo = false;
     
     public MovimientoReina() {
     }
-    
     
     @Override
     public boolean Move_From_To(Campo from, Campo to, Matriz m){
@@ -378,4 +378,5 @@ public class MovimientoReina extends Movimiento {
     public boolean estaComiendo() {
         return estaComiendo;
     }
+    
 }

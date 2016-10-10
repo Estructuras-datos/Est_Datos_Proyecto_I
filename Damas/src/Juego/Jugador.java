@@ -1,6 +1,11 @@
 
 package Juego;
 
+/**
+ *
+ * @authors Denis Rodriguez, Sergio Vega
+ */
+
 public final class Jugador{
 
     private String num;
@@ -12,8 +17,7 @@ public final class Jugador{
             this.id = id;
             color = _color;
         }
-
-
+        
         public void setNum(String num) {
             this.num = num;
         }

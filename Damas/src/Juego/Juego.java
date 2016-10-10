@@ -9,14 +9,10 @@ import javax.swing.JOptionPane;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
-/*
-    El juego, es la clase control del juego.
-
-    En esta clase, se maneja el ActionListener que se le asigno a 
-    los botones en la clase tablero y se encarga de darle un adecuado 
-    uso a las clases del Package Interfaz.  
-
-*/
+/**
+ *
+ * @authors Denis Rodriguez, Sergio Vega
+ */
 
 public class Juego implements ActionListener{
 
@@ -54,11 +50,6 @@ public class Juego implements ActionListener{
         this.tablero.SetMessage("Elija la ficha a mover");
     }
     
-    /* 
-        Si el metodo selecciona ficha es true, es porque debe hacerse el
-        movimiento; el metodo selecciona campos, los cuales se van agregando
-        a las variables from y to de esta clase.
-    */
     public boolean seleccionar(ActionEvent ae){
         if(this.error){
             this.campoInicial.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
@@ -113,11 +104,6 @@ public class Juego implements ActionListener{
         return selected;
     }
     
-    /*
-        El metodo dependiendo el turno y la ficha seleccionada retorna 
-        true o false. Tambien, si es el turno del otro jugador, muestra
-        un mensaje diciendo de quien es el turno y que ficha debe moverse.
-    */
     private boolean validarSeleccion(Campo from){
         if(turno == jugador1.getId()){
             if(from.getPieza().getColor() == jugador1.getColor()){
@@ -134,21 +120,7 @@ public class Juego implements ActionListener{
         }
         return false;        
     }
-    
-     
-    //--------------------------------------------------------------------------
-    /*
-        EL siguiente metodo lo que hace es convertir en distintas instancias
-        el atributo mov, el cual le peertenece a clase abstracta Movimiento, 
-        dependiendo el campo to y la ficha que poseea mov se va a hacer de ese
-        movimiento.
-        
-        Ej. la ficha from, tiene la pieza reina, entonces se inicializa reina
-        como Movimiento de Reina, y valida si el movimiento esta correcto
-        devolviendo un true o un false; en caso de que sea true, se cambian de
-        posicion.
-    */
-    
+         
     private boolean inicializaMov(){
         if(this.tengoInicial && this.tengoDestino){
             if(campoInicial.getPieza() instanceof Ficha)   mov = new MovimientoFicha();
@@ -188,6 +160,7 @@ public class Juego implements ActionListener{
                         this.verificaGane();
                         if(mov.puedoComer(this.campoDestino, this.matriz) && mov.estaComiendo()){
                             this.seguirComiendo = true;
+                            this.campoDestino.getBoton().setBorder(new LineBorder(Color.BLUE, 3));
                         }else{
                             this.seguirComiendo = false;
                             this.cambiaDeTurno();

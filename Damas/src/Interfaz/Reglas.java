@@ -9,11 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-/*
-    La clase Reglas es una clase dedicada para crear una ventana que aparecera al 
-    presionar el boton de reglas en la pantalla de bienvenida del programa.
-
-*/
+/**
+ *
+ * @authors Denis Rodriguez, Sergio Vega
+ */
 
 public class Reglas extends JFrame implements ActionListener{
     private JTextArea texto; //En este Jtextarea se incluye el texto a mostrar en la ventana
@@ -52,27 +51,20 @@ public class Reglas extends JFrame implements ActionListener{
         JScrollPane scroll=new JScrollPane(texto);
         botonSalir=new JButton("Salir");
         texto.setEditable(false);
-        
         this.setLayout(null);
         this.add(scroll);
         this.add(botonSalir);
-        
-        
         scroll.setBounds(30, 10, 700, 300);
         botonSalir.setBounds(300, 330, 100, 40);
-        
         texto.setSize(800, 400);
         botonSalir.addActionListener(this);
         texto.setLineWrap(true);
         texto.setWrapStyleWord(true);
-        
     }
 
     
     public void actionPerformed(ActionEvent ae) {
-        
         this.dispose();
-        
     }
     
 }
