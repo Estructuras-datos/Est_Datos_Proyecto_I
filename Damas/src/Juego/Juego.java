@@ -29,7 +29,9 @@ public class Juego implements ActionListener{
     private int x_blanco = 0,y_blanco = 4,x_negro = 7,y_negro = 4;
     private Movimiento mov;
     private boolean tengoInicial = false, tengoDestino = false;
+    private boolean seguirComiendo = false;
     
+
     public Juego() {
         nuevoJuego();
      }
@@ -51,7 +53,12 @@ public class Juego implements ActionListener{
         this.tablero.CambiaTurnoJLabel();
         this.tablero.SetMessage("Elija la ficha a mover");
     }
-        
+    
+    /* 
+        Si el metodo selecciona ficha es true, es porque debe hacerse el
+        movimiento; el metodo selecciona campos, los cuales se van agregando
+        a las variables from y to de esta clase.
+    */
     public boolean seleccionar(ActionEvent ae){
         if(this.error){
             this.campoInicial.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
@@ -128,10 +135,7 @@ public class Juego implements ActionListener{
         return false;        
     }
     
-    private boolean seguirComiendo(Campo to){
-       return  mov.puedoComer(this.campoDestino, to, this.matriz);
-    }
-    
+     
     //--------------------------------------------------------------------------
     /*
         EL siguiente metodo lo que hace es convertir en distintas instancias
@@ -182,15 +186,12 @@ public class Juego implements ActionListener{
                     if(mov.Move_From_To(campoInicial, campoDestino, this.matriz)){
                         this.reemplazarFichas(campoInicial,campoDestino);
                         this.verificaGane();
-//                        while(this.seguirComiendo(campoDestino)){
-//                            this.tablero.SetMessage("Siga comiendo.");
-//                            this.tengoInicial = false;
-//                            this.tengoDestino = false;
-//                            if(this.seleccionar(ae)){
-//                                mov.Move_From_To(campoInicial, campoDestino, this.matriz);
-//                            }
-//                        }
-                        this.cambiaDeTurno();
+                        if(mov.puedoComer(this.campoDestino, this.matriz) && mov.estaComiendo()){
+                            this.seguirComiendo = true;
+                        }else{
+                            this.seguirComiendo = false;
+                            this.cambiaDeTurno();
+                        }                        
                     }else{
                         this.tablero.SetMessage("Movimiento Incorrecto");
                         this.campoInicial.getBoton().setBorder(new LineBorder(Color.RED, 3));
@@ -231,69 +232,4 @@ public class Juego implements ActionListener{
     
 } //fin de la clase juego
 
-
-
-
-    //--------------------------------------------------------------------------
-    /* 
-        Si el metodo selecciona ficha es true, es porque debe hacerse el
-        movimiento; el metodo selecciona campos, los cuales se van agregando
-        a las variables from y to de esta clase.
-    */
-    
-    
-//    private boolean SeleccionaFicha(ActionEvent ae){
-//        if(this.error){
-//            this.campoInicial.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
-//            this.campoDestino.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
-//            if(error) error = !error;
-//            campoInicial = null;
-//            campoDestino = null;
-//        }
-//        
-//        Campo aux = null;
-//        boolean f = true;
-//        int x = 0;
-//        int y = 0;
-//        
-//        while(f){ //Este while busca la ficha seleccionada, comienza en 0,0 -> 1,0 -> 2,0.... 0,1 -> 1,1... 7,7
-//            if(y<8){
-//                if(ae.getSource() == matriz.getCampo(x, y).getBoton()){
-//                    aux = matriz.getCampo(x, y);
-//                    f = false;
-//                }else{
-//                    y++;
-//                }
-//            }else{
-//                if(x<8){
-//                    x++;
-//                    y=0;
-//                }else{
-//                    return false;
-//                }
-//                
-//            }
-//        }
-//              
-//        if(!flag1){
-//            if(aux.getPieza() instanceof Vacio) return false;//si la ficha seleccionada es vacio se cancela la seleccion
-//            
-//            else if(!this.ValidaSeleccion(aux)){
-//            
-//                campoInicial = null;
-//                this.tablero.SetMessage("Elija la ficha a mover");
-//            }else{ 
-//                flag1 = true;
-//                campoInicial = aux;
-//                this.tablero.SetMessage("Ficha: "+aux.getPieza().getClass().getSimpleName()
-//                        +"  [ "+CasteaInt(aux.getX())+(aux.getY()+1)+" ]");
-//                this.campoInicial.getBoton().setBorder(new LineBorder(Color.YELLOW, 3));  //ficha seleccionada correctamente por lo que se pone el borde en amarillo
-//            } 
-//        }else if(!flag2){
-//            flag2 = true;
-//            campoDestino = aux;
-//            this.campoInicial.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
-//            return true;
-//        }
-//        return false;
-//    }
+   

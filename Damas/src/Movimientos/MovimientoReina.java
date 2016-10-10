@@ -5,7 +5,8 @@ import Juego.Matriz;
 import Piezas.Vacio;
 
 public class MovimientoReina extends Movimiento {
-
+    private boolean estaComiendo = false;
+    
     public MovimientoReina() {
     }
     
@@ -17,10 +18,12 @@ public class MovimientoReina extends Movimiento {
 
             if (to.getX() == from.getX() - 1) { //si es el caso que se desplaza hacia adelante 
                 if (to.getY() == from.getY() - 1 || to.getY() == from.getY() + 1) { //verificar que se desplaya a un campo valido
+                    this.estaComiendo = false;
                     return true;
                 }
             } else if (to.getX() == from.getX() + 1) {//si es el caso que se desplaza hacia atras
                 if (to.getY() == from.getY() - 1 || to.getY() == from.getY() + 1) { //verificar que se desplaya a un campo valido
+                    this.estaComiendo = false;
                     return true;
                 }
             } else if (from.getPieza().getColor() == 'b') { //si la reina es blanca y va a comer
@@ -30,6 +33,7 @@ public class MovimientoReina extends Movimiento {
                         if (!(auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() == 'n') {
                             auxIzq.setPieza(new Vacio('n'));
                             m.restaNegras();
+                            this.estaComiendo = true;
                             return true;
                         }
                     } else if (to.getY() == from.getY() + 2) {
@@ -37,6 +41,7 @@ public class MovimientoReina extends Movimiento {
                         if (!(auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() == 'n') {
                             auxDer.setPieza(new Vacio('n'));
                             m.restaNegras();
+                            this.estaComiendo = true;
                             return true;
                         }
                     }
@@ -47,6 +52,7 @@ public class MovimientoReina extends Movimiento {
                         if (!(auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() == 'n') {
                             auxIzq.setPieza(new Vacio('n'));
                             m.restaNegras();
+                            this.estaComiendo = true;
                             return true;
                         }
                     } else if (to.getY() == from.getY() + 2) {
@@ -54,6 +60,7 @@ public class MovimientoReina extends Movimiento {
                         if (!(auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() == 'n') {
                             auxDer.setPieza(new Vacio('n'));
                             m.restaNegras();
+                            this.estaComiendo = true;
                             return true;
                         }
                     }
@@ -66,6 +73,7 @@ public class MovimientoReina extends Movimiento {
                         if (!(auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() == 'b') {
                             auxIzq.setPieza(new Vacio('n'));
                             m.restaBlancas();
+                            this.estaComiendo = true;
                             return true;
                         }
                     } else if (to.getY() == from.getY() + 2) {
@@ -73,6 +81,7 @@ public class MovimientoReina extends Movimiento {
                         if (!(auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() == 'b') {
                             auxDer.setPieza(new Vacio('n'));
                             m.restaBlancas();
+                            this.estaComiendo = true;
                             return true;
                         }
                     }
@@ -84,6 +93,7 @@ public class MovimientoReina extends Movimiento {
                         if (!(auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() == 'b') {
                             auxIzq.setPieza(new Vacio('n'));
                             m.restaBlancas();
+                            this.estaComiendo = true;
                             return true;
                         }
                     } else if (to.getY() == from.getY() + 2) {
@@ -91,6 +101,7 @@ public class MovimientoReina extends Movimiento {
                         if (!(auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() == 'b') {
                             auxDer.setPieza(new Vacio('n'));
                             m.restaBlancas();
+                            this.estaComiendo = true;
                             return true;
                         }
                     }
@@ -99,15 +110,15 @@ public class MovimientoReina extends Movimiento {
             }
 
         }
-
-
-        
         return false;
     }
 
     @Override
-    public boolean puedoComer(Campo from, Campo to, Matriz m) {
+    public boolean puedoComer(Campo from, Matriz m) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public boolean estaComiendo() {
+        return estaComiendo;
+    }
 }
