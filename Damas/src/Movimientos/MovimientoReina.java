@@ -104,4 +104,10 @@ public class MovimientoReina extends Movimiento {
         
         return false;
     }
+
+    @Override
+    public boolean puedoComer(Campo from, Campo to, Matriz m) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

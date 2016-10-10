@@ -66,6 +66,43 @@ public final class MovimientoFicha extends Movimiento{
         }
         return false;
     }     
+
+    @Override
+    public boolean puedoComer(Campo from, Campo to, Matriz m) {
+        if(from.getPieza().getColor() == 'b'){
+            if(to.getX() == from.getX()-2){//si es el caso de que va a comer
+                if(to.getY() == from.getY()-2 ){
+                    Campo auxIzq = m.getCampo(from.getX()-1, from.getY()-1);
+                    if(!( auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() == 'n'){
+                        return true;
+                    }
+                }else if(to.getY() == from.getY()+2){
+                    Campo auxDer = m.getCampo(from.getX()-1, from.getY()+1);
+                    if(!( auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() == 'n'){
+                        return true;
+                    }
+                }
+            }
+        } else if(from.getPieza().getColor() == 'n'){
+            if(to.getPieza() instanceof Vacio){ //verificar que el campo este vacio primero              
+                if(to.getX() == from.getX()+2){//si es el caso de que va a comer
+                    if(to.getY() == from.getY()-2){
+                        Campo auxIzq = m.getCampo(from.getX()+1, from.getY()-1);
+                        if(!( auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() == 'b'){
+                            return true;
+                        }
+                    }else if(to.getY() == from.getY()+2){
+                        Campo auxDer = m.getCampo(from.getX()+1, from.getY()+1);
+                        if(!( auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() == 'b'){
+                            return true;
+                        }
+                    }
+                    
+                }
+            }
+        }
+        return false;
+    }
     
     
 }
