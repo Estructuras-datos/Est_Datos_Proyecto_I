@@ -115,7 +115,264 @@ public class MovimientoReina extends Movimiento {
 
     @Override
     public boolean puedoComer(Campo from, Matriz m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(from.getX() == 0){//si es el caso de que la ficha se encuentra en el extremo superior
+            if(from.getY() == 1){
+                Campo auxIzq = m.getCampo(from.getX()+1, from.getY()+1);
+                Campo sig = m.getCampo(from.getX()+2, from.getY()+2);
+                if(!( auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() != from.getPieza().getColor()
+                        && (sig.getPieza() instanceof Vacio)){
+                    return true;
+                }
+            }else if(from.getY() == 7){
+                Campo auxDer = m.getCampo(from.getX()+1, from.getY()-1);
+                Campo sig = m.getCampo(from.getX()+2, from.getY()-2);
+                if(!( auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() != from.getPieza().getColor()
+                        && (sig.getPieza() instanceof Vacio)){
+                    return true;
+                }
+            }else{
+                Campo auxIzq = m.getCampo(from.getX()+1, from.getY()+1);
+                Campo sigIzq = m.getCampo(from.getX()+2, from.getY()+2);
+                Campo auxDer = m.getCampo(from.getX()+1, from.getY()-1);
+                Campo sigDer = m.getCampo(from.getX()+2, from.getY()-2);
+                if((!( auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() != from.getPieza().getColor() && (sigIzq.getPieza() instanceof Vacio))
+                        || (!( auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() != from.getPieza().getColor() && (sigDer.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            } 
+        }else if(from.getX() == 1){//si es el caso de que la ficha se encuentra en el extremo superior
+            if(from.getY() == 0){
+                Campo auxIzq = m.getCampo(from.getX()+1, from.getY()+1);
+                Campo sig = m.getCampo(from.getX()+2, from.getY()+2);
+                if(!( auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() != from.getPieza().getColor()
+                        && (sig.getPieza() instanceof Vacio)){
+                    return true;
+                }
+            }else if(from.getY() == 6){
+                Campo auxDer = m.getCampo(from.getX()+1, from.getY()-1);
+                Campo sig = m.getCampo(from.getX()+2, from.getY()-2);
+                if(!( auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() != from.getPieza().getColor()
+                        && (sig.getPieza() instanceof Vacio)){
+                    return true;
+                }
+            }else{
+                Campo auxIzq = m.getCampo(from.getX()+1, from.getY()+1);
+                Campo sigIzq = m.getCampo(from.getX()+2, from.getY()+2);
+                Campo auxDer = m.getCampo(from.getX()+1, from.getY()-1);
+                Campo sigDer = m.getCampo(from.getX()+2, from.getY()-2);
+                if((!( auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() != from.getPieza().getColor() && (sigIzq.getPieza() instanceof Vacio))
+                        || (!( auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() != from.getPieza().getColor() && (sigDer.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }
+        }else if(from.getX() == 7){//si es el caso de que la ficha se encuentra en el extremo inferior
+            if(from.getY() == 0){
+                Campo auxDer = m.getCampo(from.getX()-1, from.getY()+1);
+                Campo sig = m.getCampo(from.getX()-2, from.getY()+2);
+                if(!( auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() != from.getPieza().getColor()
+                        && (sig.getPieza() instanceof Vacio)){
+                    return true;
+                }
+            }else if(from.getY() == 6){
+                Campo auxIzq = m.getCampo(from.getX()-1, from.getY()-1);
+                Campo sig = m.getCampo(from.getX()-2, from.getY()-2);
+                if(!( auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() != from.getPieza().getColor()
+                        && (sig.getPieza() instanceof Vacio)){
+                    return true;
+                }
+            }else{
+                Campo auxIzq = m.getCampo(from.getX()-1, from.getY()-1);
+                Campo sigIzq = m.getCampo(from.getX()-2, from.getY()-2);
+                Campo auxDer = m.getCampo(from.getX()-1, from.getY()+1);
+                Campo sigDer = m.getCampo(from.getX()-2, from.getY()+2);
+                if((!( auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() != from.getPieza().getColor() && (sigIzq.getPieza() instanceof Vacio))
+                        || (!( auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() != from.getPieza().getColor() && (sigDer.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }
+        }else if(from.getX() == 6){
+            if(from.getY() == 1){
+                Campo auxDer = m.getCampo(from.getX()-1, from.getY()+1);
+                Campo sig = m.getCampo(from.getX()-2, from.getY()+2);
+                if(!( auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() != from.getPieza().getColor()
+                        && (sig.getPieza() instanceof Vacio)){
+                    return true;
+                }
+            }else if(from.getY() == 7){
+                Campo auxIzq = m.getCampo(from.getX()-1, from.getY()-1);
+                Campo sig = m.getCampo(from.getX()-2, from.getY()-2);
+                if(!( auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() != from.getPieza().getColor()
+                        && (sig.getPieza() instanceof Vacio)){
+                    return true;
+                }
+            }else{
+                Campo auxIzq = m.getCampo(from.getX()-1, from.getY()-1);
+                Campo sigIzq = m.getCampo(from.getX()-2, from.getY()-2);
+                Campo auxDer = m.getCampo(from.getX()-1, from.getY()+1);
+                Campo sigDer = m.getCampo(from.getX()-2, from.getY()+2);
+                if((!( auxIzq.getPieza() instanceof Vacio) && auxIzq.getPieza().getColor() != from.getPieza().getColor() && (sigIzq.getPieza() instanceof Vacio))
+                        || (!( auxDer.getPieza() instanceof Vacio) && auxDer.getPieza().getColor() != from.getPieza().getColor() && (sigDer.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }
+        }else if(from.getX() == 2){// las demas filas con sus extremos
+            if(from.getY() == 1){
+                Campo auxDerAdelan = m.getCampo(from.getX()+1, from.getY()+1);
+                Campo sigAdelan = m.getCampo(from.getX()+2, from.getY()+2);
+                Campo auxDerAtras = m.getCampo(from.getX()-1, from.getY()+1);
+                Campo sigAtras = m.getCampo(from.getX()-2, from.getY()+2);
+                if((!( auxDerAdelan.getPieza() instanceof Vacio) && auxDerAdelan.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAdelan.getPieza() instanceof Vacio)) 
+                    || (!( auxDerAtras.getPieza() instanceof Vacio) && auxDerAtras.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAtras.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }else if(from.getY() == 7){
+                Campo auxIzqAdelan = m.getCampo(from.getX()+1, from.getY()-1);
+                Campo sigAdelan = m.getCampo(from.getX()+2, from.getY()-2);
+                Campo auxIzqAtras = m.getCampo(from.getX()-1, from.getY()-1);
+                Campo sigAtras = m.getCampo(from.getX()-2, from.getY()-2);
+                if((!( auxIzqAdelan.getPieza() instanceof Vacio) && auxIzqAdelan.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAdelan.getPieza() instanceof Vacio)) 
+                    || (!( auxIzqAtras.getPieza() instanceof Vacio) && auxIzqAtras.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAtras.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }else{
+                Campo auxIzqAdelan = m.getCampo(from.getX()+1, from.getY()-1);
+                Campo sigIzqAdelan = m.getCampo(from.getX()+2, from.getY()-2);
+                Campo auxIzqAtras = m.getCampo(from.getX()-1, from.getY()-1);
+                Campo sigIzqAtras = m.getCampo(from.getX()-2, from.getY()-2);
+                Campo auxDerAdelan = m.getCampo(from.getX()+1, from.getY()+1);
+                Campo sigDerAdelan = m.getCampo(from.getX()+2, from.getY()+2);
+                Campo auxDerAtras = m.getCampo(from.getX()-1, from.getY()+1);
+                Campo sigDerAtras = m.getCampo(from.getX()-2, from.getY()+2);
+                if((!( auxIzqAdelan.getPieza() instanceof Vacio) && auxIzqAdelan.getPieza().getColor() != from.getPieza().getColor() && (sigIzqAdelan.getPieza() instanceof Vacio))
+                    || (!( auxIzqAtras.getPieza() instanceof Vacio) && auxIzqAtras.getPieza().getColor() != from.getPieza().getColor() && (sigIzqAtras.getPieza() instanceof Vacio))
+                    || (!( auxDerAdelan.getPieza() instanceof Vacio) && auxDerAdelan.getPieza().getColor() != from.getPieza().getColor() && (sigDerAdelan.getPieza() instanceof Vacio))
+                    || (!( auxDerAtras.getPieza() instanceof Vacio) && auxDerAtras.getPieza().getColor() != from.getPieza().getColor() && (sigDerAtras.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }
+        }else if(from.getX() == 3){
+            if(from.getY() == 0){
+                Campo auxDerAdelan = m.getCampo(from.getX()+1, from.getY()+1);
+                Campo sigAdelan = m.getCampo(from.getX()+2, from.getY()+2);
+                Campo auxDerAtras = m.getCampo(from.getX()-1, from.getY()+1);
+                Campo sigAtras = m.getCampo(from.getX()-2, from.getY()+2);
+                if((!( auxDerAdelan.getPieza() instanceof Vacio) && auxDerAdelan.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAdelan.getPieza() instanceof Vacio)) 
+                    || (!( auxDerAtras.getPieza() instanceof Vacio) && auxDerAtras.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAtras.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }else if(from.getY() == 6){
+                Campo auxIzqAdelan = m.getCampo(from.getX()+1, from.getY()-1);
+                Campo sigAdelan = m.getCampo(from.getX()+2, from.getY()-2);
+                Campo auxIzqAtras = m.getCampo(from.getX()-1, from.getY()-1);
+                Campo sigAtras = m.getCampo(from.getX()-2, from.getY()-2);
+                if((!( auxIzqAdelan.getPieza() instanceof Vacio) && auxIzqAdelan.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAdelan.getPieza() instanceof Vacio)) 
+                    || (!( auxIzqAtras.getPieza() instanceof Vacio) && auxIzqAtras.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAtras.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }else{
+                Campo auxIzqAdelan = m.getCampo(from.getX()+1, from.getY()-1);
+                Campo sigIzqAdelan = m.getCampo(from.getX()+2, from.getY()-2);
+                Campo auxIzqAtras = m.getCampo(from.getX()-1, from.getY()-1);
+                Campo sigIzqAtras = m.getCampo(from.getX()-2, from.getY()-2);
+                Campo auxDerAdelan = m.getCampo(from.getX()+1, from.getY()+1);
+                Campo sigDerAdelan = m.getCampo(from.getX()+2, from.getY()+2);
+                Campo auxDerAtras = m.getCampo(from.getX()-1, from.getY()+1);
+                Campo sigDerAtras = m.getCampo(from.getX()-2, from.getY()+2);
+                if((!( auxIzqAdelan.getPieza() instanceof Vacio) && auxIzqAdelan.getPieza().getColor() != from.getPieza().getColor() && (sigIzqAdelan.getPieza() instanceof Vacio))
+                    || (!( auxIzqAtras.getPieza() instanceof Vacio) && auxIzqAtras.getPieza().getColor() != from.getPieza().getColor() && (sigIzqAtras.getPieza() instanceof Vacio))
+                    || (!( auxDerAdelan.getPieza() instanceof Vacio) && auxDerAdelan.getPieza().getColor() != from.getPieza().getColor() && (sigDerAdelan.getPieza() instanceof Vacio))
+                    || (!( auxDerAtras.getPieza() instanceof Vacio) && auxDerAtras.getPieza().getColor() != from.getPieza().getColor() && (sigDerAtras.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }
+        }else if(from.getX() == 4){
+            if(from.getY() == 1){
+                Campo auxDerAdelan = m.getCampo(from.getX()+1, from.getY()+1);
+                Campo sigAdelan = m.getCampo(from.getX()+2, from.getY()+2);
+                Campo auxDerAtras = m.getCampo(from.getX()-1, from.getY()+1);
+                Campo sigAtras = m.getCampo(from.getX()-2, from.getY()+2);
+                if((!( auxDerAdelan.getPieza() instanceof Vacio) && auxDerAdelan.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAdelan.getPieza() instanceof Vacio)) 
+                    || (!( auxDerAtras.getPieza() instanceof Vacio) && auxDerAtras.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAtras.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }else if(from.getY() == 7){
+                Campo auxIzqAdelan = m.getCampo(from.getX()+1, from.getY()-1);
+                Campo sigAdelan = m.getCampo(from.getX()+2, from.getY()-2);
+                Campo auxIzqAtras = m.getCampo(from.getX()-1, from.getY()-1);
+                Campo sigAtras = m.getCampo(from.getX()-2, from.getY()-2);
+                if((!( auxIzqAdelan.getPieza() instanceof Vacio) && auxIzqAdelan.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAdelan.getPieza() instanceof Vacio)) 
+                    || (!( auxIzqAtras.getPieza() instanceof Vacio) && auxIzqAtras.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAtras.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }else{
+                Campo auxIzqAdelan = m.getCampo(from.getX()+1, from.getY()-1);
+                Campo sigIzqAdelan = m.getCampo(from.getX()+2, from.getY()-2);
+                Campo auxIzqAtras = m.getCampo(from.getX()-1, from.getY()-1);
+                Campo sigIzqAtras = m.getCampo(from.getX()-2, from.getY()-2);
+                Campo auxDerAdelan = m.getCampo(from.getX()+1, from.getY()+1);
+                Campo sigDerAdelan = m.getCampo(from.getX()+2, from.getY()+2);
+                Campo auxDerAtras = m.getCampo(from.getX()-1, from.getY()+1);
+                Campo sigDerAtras = m.getCampo(from.getX()-2, from.getY()+2);
+                if((!( auxIzqAdelan.getPieza() instanceof Vacio) && auxIzqAdelan.getPieza().getColor() != from.getPieza().getColor() && (sigIzqAdelan.getPieza() instanceof Vacio))
+                    || (!( auxIzqAtras.getPieza() instanceof Vacio) && auxIzqAtras.getPieza().getColor() != from.getPieza().getColor() && (sigIzqAtras.getPieza() instanceof Vacio))
+                    || (!( auxDerAdelan.getPieza() instanceof Vacio) && auxDerAdelan.getPieza().getColor() != from.getPieza().getColor() && (sigDerAdelan.getPieza() instanceof Vacio))
+                    || (!( auxDerAtras.getPieza() instanceof Vacio) && auxDerAtras.getPieza().getColor() != from.getPieza().getColor() && (sigDerAtras.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }
+        }else if(from.getX() == 5){
+            if(from.getY() == 0){
+                Campo auxDerAdelan = m.getCampo(from.getX()+1, from.getY()+1);
+                Campo sigAdelan = m.getCampo(from.getX()+2, from.getY()+2);
+                Campo auxDerAtras = m.getCampo(from.getX()-1, from.getY()+1);
+                Campo sigAtras = m.getCampo(from.getX()-2, from.getY()+2);
+                if((!( auxDerAdelan.getPieza() instanceof Vacio) && auxDerAdelan.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAdelan.getPieza() instanceof Vacio)) 
+                    || (!( auxDerAtras.getPieza() instanceof Vacio) && auxDerAtras.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAtras.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }else if(from.getY() == 6){
+                Campo auxIzqAdelan = m.getCampo(from.getX()+1, from.getY()-1);
+                Campo sigAdelan = m.getCampo(from.getX()+2, from.getY()-2);
+                Campo auxIzqAtras = m.getCampo(from.getX()-1, from.getY()-1);
+                Campo sigAtras = m.getCampo(from.getX()-2, from.getY()-2);
+                if((!( auxIzqAdelan.getPieza() instanceof Vacio) && auxIzqAdelan.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAdelan.getPieza() instanceof Vacio)) 
+                    || (!( auxIzqAtras.getPieza() instanceof Vacio) && auxIzqAtras.getPieza().getColor() != from.getPieza().getColor()
+                        && (sigAtras.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }else{
+                Campo auxIzqAdelan = m.getCampo(from.getX()+1, from.getY()-1);
+                Campo sigIzqAdelan = m.getCampo(from.getX()+2, from.getY()-2);
+                Campo auxIzqAtras = m.getCampo(from.getX()-1, from.getY()-1);
+                Campo sigIzqAtras = m.getCampo(from.getX()-2, from.getY()-2);
+                Campo auxDerAdelan = m.getCampo(from.getX()+1, from.getY()+1);
+                Campo sigDerAdelan = m.getCampo(from.getX()+2, from.getY()+2);
+                Campo auxDerAtras = m.getCampo(from.getX()-1, from.getY()+1);
+                Campo sigDerAtras = m.getCampo(from.getX()-2, from.getY()+2);
+                if((!( auxIzqAdelan.getPieza() instanceof Vacio) && auxIzqAdelan.getPieza().getColor() != from.getPieza().getColor() && (sigIzqAdelan.getPieza() instanceof Vacio))
+                    || (!( auxIzqAtras.getPieza() instanceof Vacio) && auxIzqAtras.getPieza().getColor() != from.getPieza().getColor() && (sigIzqAtras.getPieza() instanceof Vacio))
+                    || (!( auxDerAdelan.getPieza() instanceof Vacio) && auxDerAdelan.getPieza().getColor() != from.getPieza().getColor() && (sigDerAdelan.getPieza() instanceof Vacio))
+                    || (!( auxDerAtras.getPieza() instanceof Vacio) && auxDerAtras.getPieza().getColor() != from.getPieza().getColor() && (sigDerAtras.getPieza() instanceof Vacio))){
+                    return true;
+                }
+            }
+        }
+        return false; 
     }
     
     public boolean estaComiendo() {

@@ -76,7 +76,7 @@ public final class MovimientoFicha extends Movimiento{
     @Override
     public boolean puedoComer(Campo from, Matriz m) {
         if(from.getPieza().getColor() == 'b'){
-            if(from.getX() == 1){//si es el caso de que la ficha se encuentra en el extremo superior
+            if(from.getX() == 1 || from.getX() == 0){//si es el caso de que la ficha se encuentra en el extremo superior
                 return false;
             }else if(from.getY()== 0 || from.getY()== 1){// el caso de las fichas del extremo izquierdo
                 Campo auxDer = m.getCampo(from.getX()-1, from.getY()+1);
@@ -103,7 +103,7 @@ public final class MovimientoFicha extends Movimiento{
                 }
             }
         }else if(from.getPieza().getColor() == 'n'){
-            if(from.getX() == 6){//si es el caso de que la ficha se encuentra en el extremo inferior
+            if(from.getX() == 6 || from.getX() == 7){//si es el caso de que la ficha se encuentra en el extremo inferior
                 return false;
             }else if(from.getY()== 0 || from.getY()== 1){// el caso de las fichas del extremo izquierdo
                 Campo auxIzq = m.getCampo(from.getX()+1, from.getY()+1);
