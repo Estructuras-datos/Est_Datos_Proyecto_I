@@ -45,7 +45,7 @@ public class JuegoTerminado extends JFrame implements ActionListener {
         this.ganador = new JLabel("Ganador  "+fichasGanador);
         ganador.setFont(new Font(ganador.getFont().getName(),Font.BOLD|Font.ITALIC,35));
         ganador.setBounds(80,170, 500,50);
-        ganador.setForeground(Color.WHITE);
+        ganador.setForeground(Color.LIGHT_GRAY);
         add(ganador);
         this.msg = new JLabel();
         ImageIcon _img = new ImageIcon("iconos/GameOver.png");

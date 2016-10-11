@@ -143,7 +143,14 @@ public class Juego implements ActionListener{
             Reglas r = new Reglas();
         }
         else if(ae.getSource() == tablero.getRetirarse()){
-            //agregar codigo                   
+            tablero.dispose();
+            if(turno=='A'){
+                JuegoRetirado r=new JuegoRetirado(jugador1,matriz.getContadorBlancas(),matriz.getContadorNegras());
+            }
+            else{
+                JuegoRetirado r=new JuegoRetirado(jugador2,matriz.getContadorBlancas(),matriz.getContadorBlancas());
+            }
+            
         }
         else if(this.seleccionar(ae)){
             if(this.inicializaMov()){
