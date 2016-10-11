@@ -44,10 +44,10 @@ public class Juego implements ActionListener{
         
         if(turno == 'A'){
             turno = 'B';
-            verificaComerInicioTurno();
+            //verificaComerInicioTurno();
         }else{
             turno = 'A';
-            verificaComerInicioTurno();
+            //verificaComerInicioTurno();
             
         }
         this.tablero.CambiaTurnoJLabel();
