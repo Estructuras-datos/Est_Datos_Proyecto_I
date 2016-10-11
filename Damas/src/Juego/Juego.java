@@ -40,14 +40,19 @@ public class Juego implements ActionListener{
         tablero = new Tablero(matriz,this);
     }
 
-    private void cambiaDeTurno(){        
+    private void cambiaDeTurno(){   
+        
         if(turno == 'A'){
             turno = 'B';
+            verificaComerInicioTurno();
         }else{
-            turno = 'A';     
+            turno = 'A';
+            verificaComerInicioTurno();
+            
         }
         this.tablero.CambiaTurnoJLabel();
         this.tablero.SetMessage("Elija la ficha a mover");
+        
     }
     
     public boolean seleccionar(ActionEvent ae){
@@ -162,6 +167,7 @@ public class Juego implements ActionListener{
             
         }
         else if(this.seleccionar(ae)){
+            
             if(this.inicializaMov()){
                 if(campoInicial.getX() == campoDestino.getX() && campoInicial.getY() == campoDestino.getY()){ //si esta seleccionando la misma ficha como destino
                     if(seguirComiendo){
@@ -203,6 +209,7 @@ public class Juego implements ActionListener{
             }
             this.tengoInicial = false;
             this.tengoDestino = false;
+            
         }
     }
     
@@ -231,6 +238,44 @@ public class Juego implements ActionListener{
             JuegoTerminado juegoTer = new JuegoTerminado(this.jugador2);
         }
     }
+    
+    
+    public boolean verificaComerInicioTurno(){
+        for(int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Campo aux = this.matriz.getCampo(i, j);
+                if(aux.getPieza() instanceof Reina){
+                    int g=0;
+                }
+                else if (aux.getPieza() instanceof Ficha) {
+                    if (turno == 'A' && aux.getPieza().getColor()=='b') {
+                        if(mov.puedoComer(aux, this.matriz)){
+                            this.seguirComiendo = true;
+                            aux.getBoton().setBorder(new LineBorder(Color.BLUE, 3));
+                            this.campoSeguirComiendo=aux;
+                            tengoInicial=true;
+                            tengoDestino=false;
+                            return true;
+                        }
+                            
+                    } 
+                    else if(turno=='B' && aux.getPieza().getColor()=='n'){
+                        if(mov.puedoComer(aux, this.matriz)){
+                            this.seguirComiendo = true;
+                            aux.getBoton().setBorder(new LineBorder(Color.BLUE, 3));
+                            this.campoSeguirComiendo=aux;
+                            tengoInicial=true;
+                            tengoDestino=false;
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    
+    
     
 } //fin de la clase juego
 
