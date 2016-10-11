@@ -8,7 +8,7 @@ import Juego.Campo;
  */
 
 public abstract class Movimiento {
-        public abstract boolean Move_From_To(Campo from, Campo to, Matriz m);
+        public abstract boolean Move_From_To(Campo from, Campo to, Matriz m, boolean comeObligado);
         public abstract boolean puedoComer(Campo from, Matriz m);
         public abstract boolean estaComiendo();
 }

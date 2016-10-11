@@ -12,16 +12,16 @@ public class MovimientoReina extends Movimiento {
     }
     
     @Override
-    public boolean Move_From_To(Campo from, Campo to, Matriz m){
+    public boolean Move_From_To(Campo from, Campo to, Matriz m, boolean comeObligado){
 
         if (to.getPieza() instanceof Vacio) { //verificar que el campo este vacio primero       
 
-            if (to.getX() == from.getX() - 1) { //si es el caso que se desplaza hacia adelante 
+            if (to.getX() == from.getX() - 1 && !comeObligado) { //si es el caso que se desplaza hacia adelante 
                 if (to.getY() == from.getY() - 1 || to.getY() == from.getY() + 1) { //verificar que se desplaya a un campo valido
                     this.estaComiendo = false;
                     return true;
                 }
-            } else if (to.getX() == from.getX() + 1) {//si es el caso que se desplaza hacia atras
+            } else if (to.getX() == from.getX() + 1 && !comeObligado) {//si es el caso que se desplaza hacia atras
                 if (to.getY() == from.getY() - 1 || to.getY() == from.getY() + 1) { //verificar que se desplaya a un campo valido
                     this.estaComiendo = false;
                     return true;

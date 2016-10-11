@@ -64,6 +64,7 @@ public class Juego implements ActionListener{
             tengoInicial=true;
             campoInicial=campoSeguirComiendo;
         }
+        
         if(!tengoInicial){
                 if(actual.getPieza() instanceof Vacio){
                     return false;
@@ -175,7 +176,7 @@ public class Juego implements ActionListener{
                     proseguir = false;
                 }
                 else if(proseguir)
-                    if(mov.Move_From_To(campoInicial, campoDestino, this.matriz)){
+                    if(mov.Move_From_To(campoInicial, campoDestino, this.matriz, seguirComiendo)){
                         this.reemplazarFichas(campoInicial,campoDestino);
                         this.verificaGane();
                         if(mov.puedoComer(this.campoDestino, this.matriz) && mov.estaComiendo()){
