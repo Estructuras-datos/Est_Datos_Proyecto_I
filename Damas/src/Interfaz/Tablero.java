@@ -50,17 +50,21 @@ public class Tablero extends JFrame{
         info.addActionListener(l);
         panelJuego    = new JPanel(null);
         panelSuperior = new JPanel(new FlowLayout());
+        panelSuperior.setBackground(Color.black);
         panelPiezas  = new JPanel(new GridLayout(8,8));
         this.panelMS     = new JPanel(new GridLayout(2,1));
+        this.panelMS.setBackground(Color.black);
         this.panelInferior = new JPanel(new BorderLayout(25,20));
+        this.panelInferior.setBackground(Color.black);
         panelInferior.add(panelMS, BorderLayout.WEST);
+        panelJuego.setBackground(Color.black);
         panelJuego.add(panelSuperior);
         panelJuego.add(panelPiezas);
         panelJuego.add(panelInferior);
         panelJuego.add(info);
         panelSuperior.setBounds(140, 10, 300, 32);
         panelPiezas.setBounds(85, 80, 405, 420);
-        panelInferior.setBounds(85, 560, 405, 70);
+        panelInferior.setBounds(85, 520, 405, 70);
         info.setBounds(10, 10, 23, 23);
 
         //Inicializando atributos y agregandolos a los paneles.
@@ -80,6 +84,8 @@ public class Tablero extends JFrame{
         //Panel MS
         turno  = new JLabel("Turno del Jugador 1 (Blancas)");
         mensaje= new JLabel("Elija la ficha a mover");
+        turno.setForeground(Color.white);
+        mensaje.setForeground(Color.white);
         panelMS.add(turno);
         panelMS.add(mensaje);
         

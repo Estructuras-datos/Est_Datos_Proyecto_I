@@ -148,7 +148,7 @@ public class Juego implements ActionListener{
                 JuegoRetirado r=new JuegoRetirado(jugador1,matriz.getContadorBlancas(),matriz.getContadorNegras());
             }
             else{
-                JuegoRetirado r=new JuegoRetirado(jugador2,matriz.getContadorBlancas(),matriz.getContadorBlancas());
+                JuegoRetirado r=new JuegoRetirado(jugador2,matriz.getContadorBlancas(),matriz.getContadorNegras());
             }
             
         }
