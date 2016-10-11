@@ -100,8 +100,8 @@ public class JuegoRetirado extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == JugarNuevo){
-            Juego.Juego ob = new Juego.Juego();
             this.dispose();
+            Juego.Juego ob = new Juego.Juego();
         }
         else if(ae.getSource() == Salir){
             this.dispose();

@@ -21,7 +21,7 @@ public class Juego implements ActionListener{
     private Jugador jugador1, jugador2;
     private char turno = 'A';
     private boolean error = false;
-    private Campo campoInicial,campoDestino;
+    private Campo campoInicial,campoDestino, campoSeguirComiendo;
     private int x_blanco = 0,y_blanco = 4,x_negro = 7,y_negro = 4;
     private Movimiento mov;
     private boolean tengoInicial = false, tengoDestino = false;
@@ -51,6 +51,7 @@ public class Juego implements ActionListener{
     }
     
     public boolean seleccionar(ActionEvent ae){
+        
         if(this.error){
             this.campoInicial.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
             this.campoDestino.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
@@ -59,24 +60,30 @@ public class Juego implements ActionListener{
             campoDestino = null;
         }
         Campo actual = this.getFichaPulsada(ae);
-        if(!tengoInicial){
-            if(actual.getPieza() instanceof Vacio){
-                return false;
-            }else if(!this.validarSeleccion(actual)){
-                campoInicial = null;
-                this.tablero.SetMessage("Elija la ficha a mover");
-            }else{ 
-                campoInicial = actual;
-                this.tengoInicial = true;
-                this.campoInicial.getBoton().setBorder(new LineBorder(Color.GREEN, 3));  //ficha seleccionada correctamente por lo que se pone el borde en amarillo                this.campoActual = 'D'; //se setea para que la siguienete seleccion sea del destino
-            }
-        }else if(!tengoDestino){
-            campoDestino = actual;
-            this.tengoDestino = true;
-            this.campoInicial.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
-            return true;
+        if(seguirComiendo){
+            tengoInicial=true;
+            campoInicial=campoSeguirComiendo;
         }
+        if(!tengoInicial){
+                if(actual.getPieza() instanceof Vacio){
+                    return false;
+                }else if(!this.validarSeleccion(actual)){
+                    campoInicial = null;
+                    this.tablero.SetMessage("Elija la ficha a mover");
+                }else{ 
+                    campoInicial = actual;
+                    this.tengoInicial = true;
+                    this.campoInicial.getBoton().setBorder(new LineBorder(Color.GREEN, 3));  //ficha seleccionada correctamente por lo que se pone el borde en amarillo                this.campoActual = 'D'; //se setea para que la siguienete seleccion sea del destino
+                }
+            }else if(!tengoDestino){
+                campoDestino = actual;
+                this.tengoDestino = true;
+                this.campoInicial.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
+                return true;
+            }
+        
         return false;
+        
         
     }
     
@@ -105,6 +112,7 @@ public class Juego implements ActionListener{
     }
     
     private boolean validarSeleccion(Campo from){
+        
         if(turno == jugador1.getId()){
             if(from.getPieza().getColor() == jugador1.getColor()){
                 return true;
@@ -155,9 +163,14 @@ public class Juego implements ActionListener{
         else if(this.seleccionar(ae)){
             if(this.inicializaMov()){
                 if(campoInicial.getX() == campoDestino.getX() && campoInicial.getY() == campoDestino.getY()){ //si esta seleccionando la misma ficha como destino
-                    this.campoInicial.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
+                    if(seguirComiendo){
+                        this.campoInicial.getBoton().setBorder(new LineBorder(Color.BLUE, 3));
+                    }
+                    else{
+                        this.campoInicial.getBoton().setBorder(new LineBorder(Color.WHITE, 1));
+                        campoInicial = null;
+                    }
                     this.tablero.SetMessage("Eliga la ficha a mover");
-                    campoInicial = null;
                     campoDestino = null;
                     proseguir = false;
                 }
@@ -168,13 +181,21 @@ public class Juego implements ActionListener{
                         if(mov.puedoComer(this.campoDestino, this.matriz) && mov.estaComiendo()){
                             this.seguirComiendo = true;
                             this.campoDestino.getBoton().setBorder(new LineBorder(Color.BLUE, 3));
+                            this.campoSeguirComiendo=campoDestino;
+                            tengoInicial=true;
                         }else{
                             this.seguirComiendo = false;
+                            this.campoSeguirComiendo=null;
                             this.cambiaDeTurno();
                         }                        
                     }else{
                         this.tablero.SetMessage("Movimiento Incorrecto");
-                        this.campoInicial.getBoton().setBorder(new LineBorder(Color.RED, 3));
+                        if(seguirComiendo){
+                            this.campoInicial.getBoton().setBorder(new LineBorder(Color.BLUE, 3));
+                        }
+                        else{
+                            this.campoInicial.getBoton().setBorder(new LineBorder(Color.RED, 3));
+                        }
                         this.campoDestino.getBoton().setBorder(new LineBorder(Color.RED, 3));
                         this.error = true;
                     }   
